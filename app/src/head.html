@@ -1,4 +1,4 @@
-<title>Abhyashify: exam study planner for GATE, JEE, NEET, UPSC</title>
+<title>Prepkram: free exam study planner for GATE, JEE, NEET, UPSC</title>
 <link rel="preload" href="fonts/archivo-wdth.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/atkinson-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/atkinson-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -59,7 +59,7 @@ h3{font-size:1rem;font-weight:600}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:8;margin-inline:-16px;padding:10px 16px;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .top .shell{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:700;font-size:1.1rem;min-width:0}
-.logo{width:32px;height:32px;border-radius:10px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;flex:none}
+.logo{width:34px;height:34px;flex:none;display:block}.logo svg{width:100%;height:100%;display:block}
 .top-r{display:flex;align-items:center;gap:8px}
 .count{font-size:.78rem;font-weight:600;background:var(--accent-soft);color:var(--accent);padding:6px 10px;border-radius:999px;white-space:nowrap}
 .icb{width:40px;height:40px;border-radius:12px;border:0;background:transparent;color:var(--ink2);display:grid;place-items:center;transition:background .15s,color .15s,transform .12s}
@@ -265,7 +265,7 @@ svg.chart text{fill:var(--ink3);font-family:var(--f-body);font-size:10px}
 </svg>
 
 <header class="top"><div class="shell">
-  <div class="brand"><span class="logo"><svg class="ic" aria-hidden="true"><use href="#i-today"/></svg></span><span>Abhyashify</span></div>
+  <div class="brand"><span class="logo" aria-hidden="true"><svg viewBox="0 0 96 96"><rect width="96" height="96" rx="22" fill="#1F2A9C"/><rect x="27" y="20" width="14" height="58" rx="7" fill="#F7F6FF"/><circle cx="56" cy="38" r="15" fill="none" stroke="#F7F6FF" stroke-width="12"/><circle cx="56" cy="38" r="5.5" fill="#FF63B0"/></svg></span><span>Prepkram</span></div>
   <div class="top-r"><span class="count" id="count" hidden></span>
     <button class="icb avatar" id="acct" type="button" data-act="acct" aria-label="Account"></button>
     <button class="icb" id="bell" type="button" data-act="arm" aria-pressed="false" aria-label="Alarms"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg></button></div>

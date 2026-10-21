@@ -140,7 +140,7 @@ function wizToolsHtml(){
   h+=`<div class="grid2"><label class="field">${H('Name','नाम')}<input type="text" data-wf="tn" maxlength="40" placeholder="${H('My YouTube playlist','मेरी YouTube प्लेलिस्ट')}"></label><label class="field">${H('Link','लिंक')}<input type="url" data-wf="tu" maxlength="300" placeholder="https://"></label></div>
     <button class="btn sm soft" type="button" data-wz="tooladd">${ic('plus')}${H('Add this tool','यह टूल जोड़ें')}</button><p class="err" id="wzterr" role="alert"></p>`;
   h+=trackOn()
-    ?`<p class="note">${ic('check')}<span>${H('Automatic tracking is on. Opening any of these from Abhyashify logs the time until you come back.','अपने-आप ट्रैकिंग चालू है। इनमें से किसी को Abhyashify से खोलने पर लौटने तक का समय दर्ज होगा।')}</span></p>`
+    ?`<p class="note">${ic('check')}<span>${H('Automatic tracking is on. Opening any of these from Prepkram logs the time until you come back.','अपने-आप ट्रैकिंग चालू है। इनमें से किसी को Prepkram से खोलने पर लौटने तक का समय दर्ज होगा।')}</span></p>`
     :`<div class="note" style="flex-wrap:wrap">${ic('spark')}<span>${H('Automatic tracking is off. Turn it on once and I will log the time you spend in these without asking again.','अपने-आप ट्रैकिंग बंद है। एक बार चालू कर दें तो मैं बिना दोबारा पूछे इनमें बिताया समय दर्ज करूँगा।')}</span><button class="btn sm" type="button" data-act="trackon">${H('Turn on','चालू करें')}</button></div>`;
   return h;
 }

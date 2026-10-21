@@ -41,7 +41,7 @@ button:disabled{opacity:.45;cursor:not-allowed}
   <label><span id="t-voice">Which assistant voice is this for?</span><select id="gender"><option value="female">Anu (female voice)</option><option value="male">Adi (male voice)</option></select></label>
   <label><span id="t-name">Speaker's name</span><input type="text" id="name" maxlength="60" autocomplete="off" placeholder="Name"></label>
   <div class="note" style="margin-top:12px" id="t-note">Only record someone who has clearly agreed. The trained voice can be added to the app and may be used by anyone who uses the app, so the speaker must be fine with that. They can ask you to remove it at any time.</div>
-  <label class="check"><input type="checkbox" id="agree"><span id="t-agree">I am the speaker, or the speaker is here and agrees that their voice is recorded and used to train a voice for the Abhyashify study assistant, which may be shared with the app's users.</span></label>
+  <label class="check"><input type="checkbox" id="agree"><span id="t-agree">I am the speaker, or the speaker is here and agrees that their voice is recorded and used to train a voice for the Prepkram study assistant, which may be shared with the app's users.</span></label>
   <div class="row"><button class="primary" id="start" disabled>Start</button></div>
   <p class="msg" id="setup-msg"></p>
 </section>
@@ -66,10 +66,10 @@ button:disabled{opacity:.45;cursor:not-allowed}
 <script>
 /* ---------- text in two languages ---------- */
 const TXT={
-  en:{consentLine:n=>`I, ${n}, agree that recordings of my voice may be used to train a voice for the Abhyashify study assistant, and that this voice may be shared with the app's users. I can ask for it to be removed at any time.`,
+  en:{consentLine:n=>`I, ${n}, agree that recordings of my voice may be used to train a voice for the Prepkram study assistant, and that this voice may be shared with the app's users. I can ask for it to be removed at any time.`,
       tip:'Find a quiet room and hold the phone about a hand\'s width from your mouth. Read naturally, as if talking to a friend. Press Record, read the sentence, press Stop.',
       consentStep:'Consent: read this aloud',rec:'● Record',stop:'■ Stop',play:'▶ Play',keep:'Keep & next ›',skip:'Skip ›',back:'‹ Back',dl:'Download my recordings'},
-  hi:{consentLine:n=>`मैं, ${n}, सहमत हूँ कि मेरी आवाज़ की रिकॉर्डिंग अभ्यासिफ़ाई पढ़ाई सहायक की एक आवाज़ तैयार करने में इस्तेमाल हो सकती है, और यह आवाज़ ऐप के उपयोगकर्ताओं के साथ साझा की जा सकती है। इसे हटाने का अनुरोध कभी भी किया जा सकता है।`,
+  hi:{consentLine:n=>`मैं, ${n}, सहमत हूँ कि मेरी आवाज़ की रिकॉर्डिंग प्रेपक्रम पढ़ाई सहायक की एक आवाज़ तैयार करने में इस्तेमाल हो सकती है, और यह आवाज़ ऐप के उपयोगकर्ताओं के साथ साझा की जा सकती है। इसे हटाने का अनुरोध कभी भी किया जा सकता है।`,
       tip:'शांत कमरे में रहें और फ़ोन को मुँह से एक हथेली की दूरी पर रखें। दोस्त से बात करने की तरह स्वाभाविक ढंग से पढ़ें। रिकॉर्ड दबाएँ, वाक्य पढ़ें, फिर रोकें।',
       consentStep:'सहमति: इसे ज़ोर से पढ़ें',rec:'● रिकॉर्ड',stop:'■ रोकें',play:'▶ सुनें',keep:'रखें और आगे ›',skip:'छोड़ें ›',back:'‹ पीछे',dl:'मेरी रिकॉर्डिंग डाउनलोड करें'}
 };
@@ -204,7 +204,7 @@ $('btn-export').addEventListener('click',async()=>{
   for(const it of S.items){if(it.consent)continue;const d=await tget(p+it.id);if(d){files.push({name:`wavs/utt${it.id}.wav`,data:d});rows.push(`utt${it.id}.wav|${it.text.replace(/\|/g,' ')}`)}}
   if(rows.length<20){setMsg(S.lang==='hi'?'कम से कम 20 वाक्य रिकॉर्ड करें। ज़्यादा हों तो आवाज़ बेहतर बनेगी (150 से ऊपर अच्छा है)।':'Record at least 20 sentences. More is better (over 150 is good).','bad');return}
   files.push({name:'metadata.csv',data:enc.encode(rows.join('\n')+'\n')});
-  files.push({name:'README.txt',data:enc.encode(`Voice recordings for the Abhyashify study assistant.\nSpeaker: ${S.name}\nLanguage: ${S.lang}\nAssistant voice: ${S.gender==='male'?'Adi':'Anu'}\nSentences: ${rows.length}\nFormat: 22050 Hz, mono, 16-bit WAV. metadata.csv is "file|text" (the format Piper training expects).\nKeep consent/ together with the audio.\n`)});
+  files.push({name:'README.txt',data:enc.encode(`Voice recordings for the Prepkram study assistant.\nSpeaker: ${S.name}\nLanguage: ${S.lang}\nAssistant voice: ${S.gender==='male'?'Adi':'Anu'}\nSentences: ${rows.length}\nFormat: 22050 Hz, mono, 16-bit WAV. metadata.csv is "file|text" (the format Piper training expects).\nKeep consent/ together with the audio.\n`)});
   const a=document.createElement('a');a.href=URL.createObjectURL(zip(files));a.download=`voice-${S.lang}-${S.gender}-${S.name.replace(/[^\w]+/g,'_')}.zip`;document.body.appendChild(a);a.click();a.remove();
   setMsg((S.lang==='hi'?'डाउनलोड हो गया: ':'Downloaded: ')+rows.length+(S.lang==='hi'?' वाक्य।':' sentences.'),'good');
 });

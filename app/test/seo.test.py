@@ -105,7 +105,7 @@ for nm, c in canon.items(): ok(c in locs, '%s canonical is in the sitemap' % nm)
 rb = open(os.path.join(docs, 'robots.txt')).read()
 ok('Sitemap: ' + BASE + 'sitemap.xml' in rb and 'Disallow' not in rb, 'robots.txt')
 ll = open(os.path.join(docs, 'llms.txt'), encoding='utf-8').read()
-ok(ll.startswith('# Abhyashify') and '> ' in ll, 'llms.txt shape')
+ok(ll.startswith('# Prepkram') and '> ' in ll, 'llms.txt shape')
 for u in re.findall(r'\]\((https://[^)]+)\)', ll):
     if u.startswith(BASE): ok(os.path.exists(to_file(u)) or u.endswith('.txt') and os.path.exists(os.path.join(docs, u[len(BASE):])), 'llms.txt link %s' % u)
 # structured data on the app page

@@ -320,7 +320,7 @@ document.addEventListener('change',e=>{
     const file=f.files[0];f.value='';
     if(file.size>5e6){toast('That file is too large for a backup.');return}
     const r=new FileReader();
-    r.onload=()=>{try{importBackup(JSON.parse(String(r.result)))}catch(err){toast('That file is not a Abhyashify backup.')}};
+    r.onload=()=>{try{importBackup(JSON.parse(String(r.result)))}catch(err){toast('That file is not a Prepkram backup.')}};
     r.readAsText(file);
   }
 });
@@ -355,12 +355,12 @@ const isIOS=()=>/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platfo
 function installBtn(){
   if(isStandalone())return '';
   return installEv
-    ?`<button class="btn lg soft" type="button" data-act="install">${ic('upload')}Install Abhyashify as an app</button>`
+    ?`<button class="btn lg soft" type="button" data-act="install">${ic('upload')}Install Prepkram as an app</button>`
     :`<button class="btn lg soft" type="button" data-act="installhelp">${ic('upload')}How to install as an app</button>`;
 }
 function installCard(){
   if(isStandalone()||lsGet('pl.instno',null)==='1')return '';
-  return `<div class="card" style="gap:10px"><div class="stack"><h2>Install Abhyashify</h2>
+  return `<div class="card" style="gap:10px"><div class="stack"><h2>Install Prepkram</h2>
     <p class="muted">Add it to your home screen or desktop so it opens like a normal app, in its own window, and works offline.</p></div>
     ${installEv?`<button class="btn lg" type="button" data-act="install">Install now</button>`:`<button class="btn lg" type="button" data-act="installhelp">Show me how</button>`}
     <button class="btn ghost" type="button" data-act="installno">Not now</button></div>`;
@@ -371,13 +371,13 @@ function installHelp(){
   let steps;
   if(isIOS())steps=H(`<li>Open this page in <b>Safari</b> (not inside another app).</li><li>Tap the <b>Share</b> button.</li><li>Choose <b>Add to Home Screen</b>, then <b>Add</b>.</li>`,`<li>इस पेज को <b>Safari</b> में खोलें (किसी दूसरे ऐप के अंदर नहीं)।</li><li><b>Share</b> बटन दबाएँ।</li><li><b>Add to Home Screen</b> चुनें, फिर <b>Add</b> दबाएँ।</li>`);
   else if(/android/i.test(ua))steps=H(`<li>Open this page in <b>Chrome</b>.</li><li>Tap the <b>three dots</b> menu at the top right.</li><li>Tap <b>Install app</b> (some phones say <b>Add to Home screen</b>), then <b>Install</b>.</li>`,`<li>इस पेज को <b>Chrome</b> में खोलें।</li><li>ऊपर दाएँ कोने में <b>तीन बिंदुओं</b> वाला मेन्यू दबाएँ।</li><li><b>Install app</b> दबाएँ (कुछ फ़ोन में <b>Add to Home screen</b> लिखा होता है), फिर <b>Install</b> दबाएँ।</li>`);
-  else steps=H(`<li>Use <b>Chrome</b> or <b>Edge</b>.</li><li>Click the <b>install icon</b> at the right end of the address bar (a small monitor with a down arrow).</li><li>If you don't see it, open the browser menu and look for <b>Install Abhyashify</b> (Chrome: Cast, save and share, then Install page as app).</li><li>Click <b>Install</b>.</li>`,`<li><b>Chrome</b> या <b>Edge</b> इस्तेमाल करें।</li><li>एड्रेस बार के दाएँ सिरे पर <b>इंस्टॉल आइकन</b> दबाएँ (नीचे तीर वाला छोटा मॉनिटर)।</li><li>अगर वह न दिखे, तो ब्राउज़र का मेन्यू खोलकर <b>Install Abhyashify</b> खोजें (Chrome में: Cast, save and share, फिर Install page as app)।</li><li><b>Install</b> दबाएँ।</li>`);
+  else steps=H(`<li>Use <b>Chrome</b> or <b>Edge</b>.</li><li>Click the <b>install icon</b> at the right end of the address bar (a small monitor with a down arrow).</li><li>If you don't see it, open the browser menu and look for <b>Install Prepkram</b> (Chrome: Cast, save and share, then Install page as app).</li><li>Click <b>Install</b>.</li>`,`<li><b>Chrome</b> या <b>Edge</b> इस्तेमाल करें।</li><li>एड्रेस बार के दाएँ सिरे पर <b>इंस्टॉल आइकन</b> दबाएँ (नीचे तीर वाला छोटा मॉनिटर)।</li><li>अगर वह न दिखे, तो ब्राउज़र का मेन्यू खोलकर <b>Install Prepkram</b> खोजें (Chrome में: Cast, save and share, फिर Install page as app)।</li><li><b>Install</b> दबाएँ।</li>`);
   openSheet('Install as an app',`${inApp?`<p class="small" style="color:var(--warn)">This looks like a browser built into another app. Open the link in Chrome (or Safari on iPhone) first, since those are the ones that can install it.</p>`:''}
     <ol class="muted" style="padding-left:20px;display:grid;gap:8px">${steps}</ol>
     <p class="small muted">The browser decides when an install option shows up, so a prompt on its own is not guaranteed. If this page is already open as an app, there is nothing to install.</p>`,()=>{});
 }
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installEv=e;if(GATE==='signin'||(!GATE&&tab==='today'&&sheetEl.hidden))render(false)});
-window.addEventListener('appinstalled',()=>{installEv=null;toast('Abhyashify is installed');if(GATE||tab==='today')render(false)});
+window.addEventListener('appinstalled',()=>{installEv=null;toast('Prepkram is installed');if(GATE||tab==='today')render(false)});
 async function installApp(){
   if(!installEv)return;
   installEv.prompt();
@@ -393,7 +393,7 @@ function accountSheet(){
     <button class="btn lg ghost" type="button" data-act="exportjson">${ic('upload')}Export all my data (JSON)</button>
     <button class="btn lg ghost" type="button" data-act="importjson">${ic('upload')}Import a backup (JSON)</button>`;
   if(!CL){
-    openSheet('Account',`<p class="muted">You are using Abhyashify on this device only. Sign in to keep your plan and progress in sync on your phone, tablet and laptop.</p>
+    openSheet('Account',`<p class="muted">You are using Prepkram on this device only. Sign in to keep your plan and progress in sync on your phone, tablet and laptop.</p>
       ${FB?`<button class="btn lg" type="button" data-act="signin">Sign in with Google</button>`:'<p class="small muted">Sign-in is not available right now.</p>'}${imp}`,()=>{});
     return;
   }

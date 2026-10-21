@@ -1,14 +1,14 @@
-# Abhyashify
+# Prepkram
 
-Pick your exam and get a day-by-day timetable up to exam day, with alarms, study-time tracking, weekly reports and an assistant in English and Hindi.
+Free exam study planner. Pick GATE, JEE, NEET, UPSC or more and get a day-by-day timetable to exam day, with alarms, a study log and weekly reports.
 
 Source: https://aditya454760.github.io/Abhyashify/about/
 
 ## FAQ
 
-### What is Abhyashify?
+### What is Prepkram?
 
-Abhyashify is a study planner for competitive exams that runs in the browser and installs like an app. You choose an exam, it builds a day-by-day timetable up to your exam date, rings an alarm for each study block, logs the hours you actually study and compares them with the plan in a weekly report.
+Prepkram is a study planner for competitive exams that runs in the browser and installs like an app. You choose an exam, it builds a day-by-day timetable up to your exam date, rings an alarm for each study block, logs the hours you actually study and compares them with the plan in a weekly report.
 
 ### Which exams does it cover?
 
@@ -20,11 +20,11 @@ It asks for your exam, your paper or branch and any optional subjects, then conf
 
 ### Are the exam dates and syllabus official?
 
-No. The subjects and the months an exam is usually held were written from general knowledge, not downloaded from official sites. Abhyashify asks you to confirm your own exam date and never treats its hint as the real date. Check the syllabus and schedule on the exam body's own website and edit the subjects if they differ.
+No. The subjects and the months an exam is usually held were written from general knowledge, not downloaded from official sites. Prepkram asks you to confirm your own exam date and never treats its hint as the real date. Check the syllabus and schedule on the exam body's own website and edit the subjects if they differ.
 
 ### Does it cost anything?
 
-Abhyashify has no paid plan. The built-in assistant works with no account and no cost. Optional extras use your own keys: a cloned voice needs a paid plan with ElevenLabs, and the assistant's Smart mode uses a Gemini or Anthropic key that you supply.
+Prepkram has no paid plan. The built-in assistant works with no account and no cost. Optional extras use your own keys: a cloned voice needs a paid plan with ElevenLabs, and the assistant's Smart mode uses a Gemini or Anthropic key that you supply.
 
 ### Does it work on a phone and offline?
 
@@ -32,7 +32,7 @@ Yes. Open it in Chrome, Edge or Safari and install it from the browser menu (on 
 
 ### Can it track the apps and websites I study with?
 
-Partly. A web page cannot see other apps or tabs. Abhyashify notes when you leave the Today screen for a study tool and when you come back. A Chrome and Edge extension counts time on the study sites you choose, and an Android companion app reads usage time for the study apps you choose. The Android companion is still experimental.
+Partly. A web page cannot see other apps or tabs. Prepkram notes when you leave the Today screen for a study tool and when you come back. A Chrome and Edge extension counts time on the study sites you choose, and an Android companion app reads usage time for the study apps you choose. The Android companion is still experimental.
 
 ### Is it available in Hindi?
 
@@ -53,6 +53,30 @@ Yes. The assistant is called Anu (Adi in the male voice). You can type or speak.
 3. Give permissions and name your study tools: Allow notifications, microphone and storage in one go, and say which apps, websites or YouTube channels you study with.
 4. Say when you can study: Tell it which parts of the day and how many hours suit you, and which days are off.
 5. Review the timetable and follow it: Follow the timetable up to the exam date as it is, or edit any block. Alarms then ring and you log what you actually studied.
+
+## How to make a study timetable for a competitive exam
+
+A good exam timetable works backwards from your exam date: fix the date, count the days, split them into phases, give each subject a share by its importance and your confidence, and protect days for revision and mock tests. Here are the steps, with the split Prepkram uses.
+
+1. Fix the exam date and count the days: Take the date from the exam body's official notice. Count the days from today to that date and subtract your days off.
+2. List every subject and give it two scores: Rate each subject for importance (1 to 5) and for how confident you are (1 to 5). High importance with low confidence should get the most time.
+3. Split the days into three phases: First learn the syllabus, then revise and practise, and finish with a final stretch of weekly mock tests and fixing the weak spots they show. The table below is the split Prepkram uses.
+4. Set your daily hours: Use different hours for weekdays and days off, and pick the part of the day when you concentrate best.
+5. Spread the subjects by their scores: Share each phase's days and daily hours across the subjects in proportion to their scores, and put the high-importance ones first.
+6. Give one day a week to a full mock test: Pick a fixed day (usually the last study day of the week), sit a full-length mock, and review the mistakes the next day.
+7. Compare plan and reality every week: Check the hours you planned against the hours you really studied. If the gap is large, change next week's plan instead of quietly piling up missed hours.
+
+This is how Prepkram divides the days to the exam for someone who still has the whole syllabus to learn (a month counted as 30 days). With under a month left the learning phase drops out and half the days go to the final stretch.
+
+| Months left | Learn (weeks) | Revise and practise (weeks) | Final stretch (weeks) |
+|---|---|---|---|
+| 1 | 0 | 2.9 | 1.4 |
+| 2 | 4.4 | 2.4 | 1.7 |
+| 3 | 6.7 | 3.6 | 2.6 |
+| 4 | 8.9 | 4.9 | 3.4 |
+| 6 | 14.1 | 7.6 | 4 |
+| 9 | 22.4 | 12.1 | 4 |
+| 12 | 30.9 | 16.6 | 4 |
 
 ## Exams and preloaded subjects
 

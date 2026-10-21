@@ -1,4 +1,4 @@
-/* Runs only on the Abhyashify page. It passes messages between the page and the extension.
+/* Runs only on the Prepkram page. It passes messages between the page and the extension.
    The page can ask for study-site totals and tell the extension which tools you added there. Nothing else is shared. */
 (function () {
   const send = o => window.postMessage(Object.assign({ src: 'abhyashify-ext' }, o), location.origin);

@@ -46,7 +46,7 @@ const PERM_INFO=[
  {k:'notif',t:'Notifications',d:'Shows a banner with sound when a study block, reminder or mock test starts, even while you are in another tab or app. If your phone shuts this page down to save battery, a banner cannot appear. The calendar export in Settings is the reliable way for a locked phone.'},
  {k:'store',t:'Keep my data on this device',d:'Asks the browser not to clear your plan and logs when it is short of space.'},
  {k:'mic',t:'Microphone',d:'Lets you talk to the assistant. It listens only while you hold the mic button on.'},
- {k:'track',t:'Track my study tools',d:'Once you agree here, opening a study tool from Abhyashify starts a timer that stops when you come back, and the time is logged as study time. It never asks again. You can switch it off at any time. Abhyashify cannot see anything you do inside those tools.'}
+ {k:'track',t:'Track my study tools',d:'Once you agree here, opening a study tool from Prepkram starts a timer that stops when you come back, and the time is logged as study time. It never asks again. You can switch it off at any time. Prepkram cannot see anything you do inside those tools.'}
 ];
 const STATUS_TXT={granted:['Allowed','good'],denied:['Blocked in browser settings','bad'],ask:['Not asked yet','warn'],na:['Not available here','']};
 function permRow(p){
@@ -152,7 +152,7 @@ function vToolReport(r){
   for(const l of LG())if(l.tool&&ds.has(l.d))by[l.tool]=(by[l.tool]||0)+l.m;
   const ents=Object.entries(by).sort((a,b)=>b[1]-a[1]);if(!ents.length)return '';
   const mx=ents[0][1];
-  return `<section class="card"><h3>Study tools this week</h3>`+ents.map(([k,m])=>`<div class="stack" style="gap:6px"><div class="row between"><span class="t">${esc(toolName(k))}</span><span class="small muted">${fmtDur(m)}</span></div><div class="meter"><i data-w="${pct(m,mx)}"></i></div></div>`).join('')+`<p class="small muted">Time logged automatically when you opened these from Abhyashify, plus anything imported from your phone.</p></section>`;
+  return `<section class="card"><h3>Study tools this week</h3>`+ents.map(([k,m])=>`<div class="stack" style="gap:6px"><div class="row between"><span class="t">${esc(toolName(k))}</span><span class="small muted">${fmtDur(m)}</span></div><div class="meter"><i data-w="${pct(m,mx)}"></i></div></div>`).join('')+`<p class="small muted">Time logged automatically when you opened these from Prepkram, plus anything imported from your phone.</p></section>`;
 }
 
 /* ----- the Study tools and permissions sheet ----- */
@@ -165,7 +165,7 @@ function toolsBody(){
     <div class="stack" style="gap:0">${ts.length?ts.map(t=>`<div class="item" style="grid-template-columns:1fr auto"><span class="stack" style="gap:2px;min-width:0"><span class="t">${esc(t.name)}</span><span class="small muted" style="overflow-wrap:anywhere">${esc(t.url)}</span></span><button class="btn sm danger" type="button" data-act="tooldel" data-t="${esc(t.id)}" aria-label="Remove ${esc(t.name)}">${ic('x')}</button></div>`).join(''):'<p class="small muted">None yet.</p>'}</div>
     <div class="grid2"><label class="field">Name<input type="text" id="tn" maxlength="40" placeholder="My YouTube playlist"></label><label class="field">Link<input type="url" id="tu" maxlength="300" placeholder="https://"></label></div>
     <button class="btn soft" type="button" data-act="tooladd">${ic('plus')}Add this tool</button>
-    <div class="stack" style="gap:2px"><h3>Time on your computer</h3><p class="small muted">${EXT.seen?'The Abhyashify browser extension is connected. It counts time only on the sites you chose above, and the totals arrive here by themselves.':'On a laptop, the Abhyashify browser extension counts the time you spend on your study sites and sends the totals here by itself. It is in the extension folder of the project (see the README). It is not installed in this browser yet.'}</p></div>
+    <div class="stack" style="gap:2px"><h3>Time on your computer</h3><p class="small muted">${EXT.seen?'The Prepkram browser extension is connected. It counts time only on the sites you chose above, and the totals arrive here by themselves.':'On a laptop, the Prepkram browser extension counts the time you spend on your study sites and sends the totals here by itself. It is in the extension folder of the project (see the README). It is not installed in this browser yet.'}</p></div>
     ${EXT.seen?`<button class="btn ghost" type="button" data-act="extsync">Get the latest from the extension</button>`:''}
     <div class="stack" style="gap:2px"><h3>Time from your phone</h3><p class="small muted">The Android companion app measures the time you spend in the study apps you chose and exports a file. Import it here and it is added to your logs, one entry per app per day. Days are filled from midnight because the file has totals, not start times.</p></div>
     <input type="file" id="usef" accept=".json,application/json" hidden>
@@ -273,7 +273,7 @@ document.addEventListener('change',e=>{
     const r=new FileReader();
     r.onload=()=>{
       try{const x=importUsage(JSON.parse(String(r.result)));render(false);toast(x.apps?H('Imported '+x.apps+' entries over '+x.days+' days.',x.days+' दिनों की '+x.apps+' प्रविष्टियाँ जोड़ीं।'):H('No study time found in that file.','उस फ़ाइल में पढ़ाई का समय नहीं मिला।'))}
-      catch(err){toast(H('That is not a usage file from the Abhyashify Android app.','यह Abhyashify Android ऐप की उपयोग फ़ाइल नहीं है।'))}
+      catch(err){toast(H('That is not a usage file from the Prepkram Android app.','यह Prepkram Android ऐप की उपयोग फ़ाइल नहीं है।'))}
     };
     r.readAsText(file);
   }

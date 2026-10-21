@@ -1,6 +1,6 @@
-/* Abhyashify study timer: counts active time on the sites you chose.
+/* Prepkram study timer: counts active time on the sites you chose.
    Only the site name (for example youtube.com) and minutes per day are kept, never page addresses, titles or content.
-   Everything stays in this browser's extension storage until Abhyashify asks for it on its own page. */
+   Everything stays in this browser's extension storage until Prepkram asks for it on its own page. */
 const KEEP_DAYS = 60;
 const MAX_STEP = 3 * 60 * 1000;      // one flush never adds more than 3 minutes, so a sleeping laptop cannot inflate the total
 const IDLE_SECONDS = 300;
@@ -87,7 +87,7 @@ chrome.runtime.onInstalled.addListener(async () => {
   recompute();
 });
 
-/* The JSON that the Abhyashify page imports (same shape the Android companion writes). */
+/* The JSON that the Prepkram page imports (same shape the Android companion writes). */
 async function exportJson() {
   await recompute();
   const s = await load();

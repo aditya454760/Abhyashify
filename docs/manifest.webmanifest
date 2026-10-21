@@ -1,6 +1,6 @@
 {
-  "name": "Abhyashify",
-  "short_name": "Abhyashify",
+  "name": "Prepkram",
+  "short_name": "Prepkram",
   "description": "Study planner with alarms, daily log and weekly report. Syncs across your devices.",
   "id": "./",
   "start_url": "./",

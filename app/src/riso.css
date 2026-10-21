@@ -27,7 +27,7 @@ html[lang=hi] h1,html[lang=hi] h2{font-weight:800}
 /* top bar: a printed header with a rule under it */
 .top{background:var(--bg);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:var(--rule)}
 .brand{font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:1.08rem;letter-spacing:-.01em}
-.logo{width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--accent-ink);border:2px solid var(--ink)}
+.logo{width:36px;height:36px;border:0;background:none;border-radius:0}
 .count{background:var(--yellow);color:#121646;border:1.5px solid #121646;border-radius:4px;font-weight:800;transform:rotate(-1.5deg)}
 .icb{width:44px;height:44px;border-radius:8px;border:1.5px solid var(--ink);background:transparent;color:var(--ink)}
 .icb:hover{background:var(--yellow);color:#121646}

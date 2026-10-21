@@ -111,7 +111,7 @@ async function cvCreate(files){
   if(!files.length)return say(H('Choose one or more recordings of that person speaking.','उस व्यक्ति की बोलती हुई एक या ज़्यादा रिकॉर्डिंग चुनें।'));
   if(files.length>5||files.some(f=>f.size>10*1048576))return say(H('Use up to 5 recordings, each under 10 MB.','ज़्यादा से ज़्यादा 5 रिकॉर्डिंग लें, हर एक 10 MB से छोटी।'));
   CVUI.busy=H('Creating the voice…','आवाज़ बन रही है…');CVUI.msg='';cvRepaint();
-  const fd=new FormData();fd.append('name','Abhyashify '+(CVUI.label||asstName()));fd.append('description','Voice for the Abhyashify study assistant, used with the speaker\'s permission.');files.forEach(f=>fd.append('files',f,f.name||'voice.wav'));
+  const fd=new FormData();fd.append('name','Prepkram '+(CVUI.label||asstName()));fd.append('description','Voice for the Prepkram study assistant, used with the speaker\'s permission.');files.forEach(f=>fd.append('files',f,f.name||'voice.wav'));
   try{
     const r=await fetch(CV_API+'/voices/add',{method:'POST',headers:{'xi-api-key':ACFG.elKey},body:fd});
     if(!r.ok){

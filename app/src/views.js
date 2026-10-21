@@ -111,7 +111,7 @@ function paintGate(){
   const v=document.getElementById('view');v.className='view enter';
   if(GATE==='loading'){v.innerHTML='<div class="sk"><i style="height:150px"></i><i style="height:78px"></i><i style="height:92px"></i></div>';return}
   v.innerHTML=`<section class="card" style="gap:16px;margin-top:8vh"><span class="tile-ic" style="--c:var(--accent)">${ic('today')}</span>
-    <div class="stack"><h1>Abhyashify</h1><p class="muted">Plan your study blocks, get alarms, log your hours and see how you did each week. Sign in and your progress follows you across phone, tablet and laptop.</p></div>
+    <div class="stack"><h1>Prepkram</h1><p class="muted">Plan your study blocks, get alarms, log your hours and see how you did each week. Sign in and your progress follows you across phone, tablet and laptop.</p></div>
     <button class="btn lg" type="button" data-act="signin">Sign in with Google</button>
     <button class="btn lg ghost" type="button" data-act="local">Continue on this device only</button>
     ${installBtn()}
@@ -134,11 +134,11 @@ function render(anim){
 
 /* ---------- views ---------- */
 function aboutLinks(){
-  return `<p class="small muted aboutlinks"><a href="about/" target="_blank" rel="noopener">${H('About Abhyashify','अभ्यासिफ़ाई के बारे में')}</a> · <a href="exams/" target="_blank" rel="noopener">${H('Planners by exam','परीक्षा के हिसाब से प्लानर')}</a> · <a href="hi/about/" target="_blank" rel="noopener" lang="hi">हिन्दी</a></p>`;
+  return `<p class="small muted aboutlinks"><a href="about/" target="_blank" rel="noopener">${H('About Prepkram','प्रेपक्रम के बारे में')}</a> · <a href="exams/" target="_blank" rel="noopener">${H('Planners by exam','परीक्षा के हिसाब से प्लानर')}</a> · <a href="hi/about/" target="_blank" rel="noopener" lang="hi">हिन्दी</a></p>`;
 }
 function onboarding(){
   return `<div class="card" style="gap:14px"><span class="tile-ic" style="--c:var(--accent)">${ic('spark')}</span><div class="stack"><h2>Set up your course</h2>
-    <p class="muted">Pick your exam, confirm your date and tell me when you like to study. I build a day-by-day timetable up to your exam that you can follow as it is or change. Abhyashify then rings an alarm for each block, logs the hours you put in and checks them against your plan every week.</p></div>
+    <p class="muted">Pick your exam, confirm your date and tell me when you like to study. I build a day-by-day timetable up to your exam that you can follow as it is or change. Prepkram then rings an alarm for each block, logs the hours you put in and checks them against your plan every week.</p></div>
     <button class="btn lg" type="button" data-act="wiz">${ic('spark')}Set up my course</button>
     <button class="btn lg ghost" type="button" data-act="blank">Start empty and build my own</button>
     <p class="small muted">JEE, NEET, GATE, UPSC, SSC, NDA, CDS, CAT, CLAT, CA and more, each with its branches and subjects. There is always an Other option for anything not listed.</p>${aboutLinks()}</div>`;

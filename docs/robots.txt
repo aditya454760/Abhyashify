@@ -1,4 +1,4 @@
-# Abhyashify welcomes search engines and AI answer engines. Nothing here is private: accounts and study data live behind sign-in.
+# Prepkram welcomes search engines and AI answer engines. Nothing here is private: accounts and study data live behind sign-in.
 User-agent: *
 Allow: /
 

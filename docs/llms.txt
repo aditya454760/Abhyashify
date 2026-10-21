@@ -1,14 +1,16 @@
-# Abhyashify
+# Prepkram
 
-> Pick your exam and get a day-by-day timetable up to exam day, with alarms, study-time tracking, weekly reports and an assistant in English and Hindi.
+> Free exam study planner. Pick GATE, JEE, NEET, UPSC or more and get a day-by-day timetable to exam day, with alarms, a study log and weekly reports.
 
-Abhyashify is a free, open-source study planner for competitive exams (JEE, NEET, GATE, UPSC, SSC, NDA, CDS, CAT / MBA, CLAT / Law, CA, Banking, Railways (RRB), CUET UG, NET / JAM, Teaching (CTET / TET), School boards, State PSC). It runs in the browser, installs like an app, and works in English and Hindi. Subjects and typical timings were written from general knowledge, not taken from official sites, so users must confirm exam dates and syllabus with the exam body.
+Prepkram is a free, open-source study planner for competitive exams (JEE, NEET, GATE, UPSC, SSC, NDA, CDS, CAT / MBA, CLAT / Law, CA, Banking, Railways (RRB), CUET UG, NET / JAM, Teaching (CTET / TET), School boards, State PSC). It runs in the browser, installs like an app, and works in English and Hindi. Subjects and typical timings were written from general knowledge, not taken from official sites, so users must confirm exam dates and syllabus with the exam body.
 
 ## Main pages
 
-- [Abhyashify app](https://aditya454760.github.io/Abhyashify/): the planner itself (needs JavaScript)
+- [Prepkram app](https://aditya454760.github.io/Abhyashify/): the planner itself (needs JavaScript)
 - [About, how it works and FAQ](https://aditya454760.github.io/Abhyashify/about/): what it does, the setup steps and answers to common questions
 - [Study planners by exam](https://aditya454760.github.io/Abhyashify/exams/): every exam family and paper with its preloaded subjects
+- [How to make a study timetable for a competitive exam](https://aditya454760.github.io/Abhyashify/guides/timetable/): seven steps and how the months left are split
+- [How many hours a day to study, by exam](https://aditya454760.github.io/Abhyashify/guides/hours/): the starting hours and mock length used for each exam
 - [हिन्दी में जानकारी](https://aditya454760.github.io/Abhyashify/hi/about/): the same information in Hindi
 - [Source code and README](https://github.com/aditya454760/Abhyashify)
 
