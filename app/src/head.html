@@ -12,31 +12,31 @@
 @font-face{font-family:'Atkinson Hyperlegible Next';src:url(fonts/atkinson-700.woff2) format('woff2');font-weight:700 800;font-display:swap}
 @font-face{font-family:'Noto Sans Devanagari';src:url(fonts/devanagari-wght.woff2) format('woff2');font-weight:100 900;font-display:swap;unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF}
 :root{
-  --bg:#F1F2EE; --surface:color-mix(in srgb,var(--bg) 91%,var(--blue)); --surface2:var(--bg);
-  --ink:#121646; --ink2:#2F3470; --ink3:#3C4280;
-  --blue:#1F2A9C; --yellow:#FFE53B; --hero:#1F2A9C; --hero-ink:#F7F6FF;
+  --bg:#F3F0E6; --surface:color-mix(in srgb,var(--bg) 91%,var(--blue)); --surface2:var(--bg);
+  --ink:#132A20; --ink2:#2E4A3C; --ink3:#3B5848; --ink-y:#132A20;
+  --blue:#1B5E3F; --yellow:#FFD93A; --hero:#17523A; --hero-ink:#F4F8F4;
   --line:color-mix(in srgb,var(--ink) 30%,transparent); --track:color-mix(in srgb,var(--bg) 80%,var(--blue));
-  --accent:#BE1263; --accent-soft:#FADBEA; --accent-ink:#FFFFFF;
+  --accent:#B4440A; --accent-soft:#FBE3D2; --accent-ink:#FFFFFF;
   --good:#126B43; --good-soft:#DDF0E5; --warn:#7F5200; --warn-soft:#FFF0B8; --bad:#B3201B; --bad-soft:#FBE0DE;
-  --sl:46%; --scrim:rgba(18,22,70,.5); --shadow:none;
+  --sl:46%; --scrim:rgba(19,42,32,.5); --shadow:none;
   --f-display:'Archivo','Noto Sans Devanagari','Segoe UI',system-ui,sans-serif;
   --f-body:'Atkinson Hyperlegible Next','Atkinson Hyperlegible','Noto Sans Devanagari','Segoe UI',system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#10143A; --ink:#F1F0FF; --ink2:#CDD0F7; --ink3:#B8BDF0; --blue:#A3B1FF; --hero:#2A38D6; --hero-ink:#FFFFFF;
+    --bg:#0E1B15; --ink:#EEF4EF; --ink2:#C9D8CE; --ink3:#B3C7B9; --blue:#7FD6A0; --hero:#1E6A47; --hero-ink:#FFFFFF;
     --line:color-mix(in srgb,var(--ink) 30%,transparent);
-    --accent:#FF63B0; --accent-soft:#4A1B3C; --accent-ink:#10143A;
+    --accent:#FF9B5A; --accent-soft:#402312; --accent-ink:#0E1B15;
     --good:#58C68C; --good-soft:#15301F; --warn:#E4B35B; --warn-soft:#3C3210; --bad:#F2837C; --bad-soft:#3A1A19;
-    --sl:66%; --scrim:rgba(4,6,28,.65); color-scheme:dark;
+    --sl:66%; --scrim:rgba(2,10,6,.65); color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#10143A; --ink:#F1F0FF; --ink2:#CDD0F7; --ink3:#B8BDF0; --blue:#A3B1FF; --hero:#2A38D6; --hero-ink:#FFFFFF;
+  --bg:#0E1B15; --ink:#EEF4EF; --ink2:#C9D8CE; --ink3:#B3C7B9; --blue:#7FD6A0; --hero:#1E6A47; --hero-ink:#FFFFFF;
   --line:color-mix(in srgb,var(--ink) 30%,transparent);
-  --accent:#FF63B0; --accent-soft:#4A1B3C; --accent-ink:#10143A;
+  --accent:#FF9B5A; --accent-soft:#402312; --accent-ink:#0E1B15;
   --good:#58C68C; --good-soft:#15301F; --warn:#E4B35B; --warn-soft:#3C3210; --bad:#F2837C; --bad-soft:#3A1A19;
-  --sl:66%; --scrim:rgba(4,6,28,.65); color-scheme:dark;
+  --sl:66%; --scrim:rgba(2,10,6,.65); color-scheme:dark;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
@@ -265,7 +265,7 @@ svg.chart text{fill:var(--ink3);font-family:var(--f-body);font-size:10px}
 </svg>
 
 <header class="top"><div class="shell">
-  <div class="brand"><span class="logo" aria-hidden="true"><svg viewBox="0 0 96 96"><rect width="96" height="96" rx="22" fill="#1F2A9C"/><rect x="27" y="20" width="14" height="58" rx="7" fill="#F7F6FF"/><circle cx="56" cy="38" r="15" fill="none" stroke="#F7F6FF" stroke-width="12"/><circle cx="56" cy="38" r="5.5" fill="#FF63B0"/></svg></span><span>Prepkram</span></div>
+  <div class="brand"><span class="logo" aria-hidden="true"><svg viewBox="0 0 96 96"><rect width="96" height="96" rx="22" fill="#17523A"/><rect x="27" y="20" width="14" height="58" rx="7" fill="#F4F8F4"/><circle cx="56" cy="38" r="15" fill="none" stroke="#F4F8F4" stroke-width="12"/><circle cx="56" cy="38" r="5.5" fill="#FF9B5A"/></svg></span><span>Prepkram</span></div>
   <div class="top-r"><span class="count" id="count" hidden></span>
     <button class="icb avatar" id="acct" type="button" data-act="acct" aria-label="Account"></button>
     <button class="icb" id="bell" type="button" data-act="arm" aria-pressed="false" aria-label="Alarms"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg></button></div>

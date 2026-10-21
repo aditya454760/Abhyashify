@@ -10,7 +10,9 @@ function applyTheme(){const r=document.documentElement;if(theme==='auto')r.remov
 /* ---------- UI helpers ---------- */
 const ic=(n,c)=>`<svg class="ic${c?' '+c:''}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 const subjName=id=>(S.plan.subjects.find(s=>s.id===id)||{name:'Other'}).name;
-const cvar=id=>{const i=Math.max(0,S.plan.subjects.findIndex(s=>s.id===id));return `--c:hsl(${(i*47+215)%360} 58% var(--sl))`};
+/* subject colours: earthy and spread across hue and saturation so ten subjects still tell apart; no pure blue or pink */
+const SUBJ_HS=[[152,52],[24,76],[182,56],[44,80],[6,62],[92,46],[286,36],[30,34],[205,40],[130,30]];
+const cvar=id=>{const i=Math.max(0,S.plan.subjects.findIndex(s=>s.id===id)),h=SUBJ_HS[i%SUBJ_HS.length];return `--c:hsl(${(h[0]+Math.floor(i/SUBJ_HS.length)*17)%360} ${h[1]}% var(--sl))`};
 const subjChip=id=>`<span class="chip" style="${cvar(id)}"><span class="dot"></span>${esc(subjName(id))}</span>`;
 const subjOpts=sel=>S.plan.subjects.map(s=>`<option value="${esc(s.id)}"${s.id===sel?' selected':''}>${esc(s.name)}</option>`).join('');
 const kindOpts=(o,sel)=>Object.entries(o).map(([k,v])=>`<option value="${k}"${k===sel?' selected':''}>${esc(v)}</option>`).join('');

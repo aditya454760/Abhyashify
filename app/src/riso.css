@@ -4,7 +4,7 @@
    Panels are flat tinted fields, rows are ruled like a printed timetable, and anything you choose or finish is a filled bubble.
    Nothing floats and nothing casts a soft shadow. Colour is flat; texture comes from hatching, halftone dots and a little paper grain. */
 :root{--riso:color-mix(in srgb,var(--accent) 66%,#fff);--rule:2px solid var(--ink);--hair:1.5px solid var(--line);--hi:var(--hero-ink)}
-::selection{background:var(--yellow);color:#121646}
+::selection{background:var(--yellow);color:var(--ink-y)}
 body{background-color:var(--bg)}
 a{color:var(--blue);text-underline-offset:3px}
 
@@ -28,9 +28,9 @@ html[lang=hi] h1,html[lang=hi] h2{font-weight:800}
 .top{background:var(--bg);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:var(--rule)}
 .brand{font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:1.08rem;letter-spacing:-.01em}
 .logo{width:36px;height:36px;border:0;background:none;border-radius:0}
-.count{background:var(--yellow);color:#121646;border:1.5px solid #121646;border-radius:4px;font-weight:800;transform:rotate(-1.5deg)}
+.count{background:var(--yellow);color:var(--ink-y);border:1.5px solid var(--ink-y);border-radius:4px;font-weight:800;transform:rotate(-1.5deg)}
 .icb{width:44px;height:44px;border-radius:8px;border:1.5px solid var(--ink);background:transparent;color:var(--ink)}
-.icb:hover{background:var(--yellow);color:#121646}
+.icb:hover{background:var(--yellow);color:var(--ink-y)}
 .icb:active{transform:translateY(1px)}
 .icb[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 .icb.sm{width:38px;height:38px}
@@ -63,7 +63,7 @@ html[lang=hi] h1,html[lang=hi] h2{font-weight:800}
 .btn.danger{background:transparent;color:var(--bad);box-shadow:inset 0 0 0 1.5px var(--bad)}
 .btn.stopb{background:var(--bad);color:#fff}
 .btn.sm{min-height:42px;border-radius:8px}
-.btn.soft:hover,.btn.ghost:hover{background:var(--yellow);color:#121646;filter:none;box-shadow:inset 0 0 0 1.5px #121646}
+.btn.soft:hover,.btn.ghost:hover{background:var(--yellow);color:var(--ink-y);filter:none;box-shadow:inset 0 0 0 1.5px var(--ink-y)}
 
 /* pills and chips */
 .pre,.chip,.as-chip,.tool,.wz-chip{background:transparent;color:var(--ink);border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line);min-height:40px}
@@ -91,10 +91,10 @@ html[lang=hi] h1,html[lang=hi] h2{font-weight:800}
 .dayn::after{inset:4px;background:var(--bg)}
 .dayn.today span{color:var(--accent);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:2px}
 .dayn.off{border-style:dashed;border-color:var(--line);background:transparent}
-.dayb[aria-pressed="true"]{background:var(--yellow);color:#121646;box-shadow:none}
-.dayb[aria-pressed="true"] .dayn{border-color:#121646}
+.dayb[aria-pressed="true"]{background:var(--yellow);color:var(--ink-y);box-shadow:none}
+.dayb[aria-pressed="true"] .dayn{border-color:var(--ink-y)}
 .dayb[aria-pressed="true"] .dayn::after{background:var(--yellow)}
-.dayb[aria-pressed="true"] .dayn.today span{color:#B3125E}
+.dayb[aria-pressed="true"] .dayn.today span{color:var(--ink-y)}
 
 /* the Today panel: one solid field of ink, the thing to do next in big figures */
 .hero.today{background:var(--hero);color:var(--hi);--mis:var(--riso);border-radius:14px;padding:20px 18px 16px;gap:12px;flex-direction:column;align-items:stretch;position:relative;overflow:hidden;flex-wrap:nowrap}
@@ -111,8 +111,8 @@ html[lang=hi] h1,html[lang=hi] h2{font-weight:800}
 .hero-top{display:flex;align-items:flex-end}
 .hero .big,.hero .clk{font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:3.7rem;line-height:.9;letter-spacing:-.03em;color:var(--hi);text-shadow:3px 3px 0 var(--mis,var(--riso));font-variant-numeric:tabular-nums}
 .hero .clk{font-size:2.7rem}
-.hero.today .btn{background:var(--yellow);color:#121646}
-.hero.today .btn.stopb{background:#fff;color:#121646}
+.hero.today .btn{background:var(--yellow);color:var(--ink-y)}
+.hero.today .btn.stopb{background:#fff;color:var(--ink-y)}
 .hero.today .btn:hover{filter:brightness(1.05)}
 .hero-tx{gap:6px}
 .hero-meter{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-top:1.5px dashed color-mix(in srgb,var(--hi) 50%,transparent);padding-top:12px}

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#1F2A9C">
+<meta name="theme-color" content="#F3F0E6">
 <meta name="description" content="Free exam study planner. Pick GATE, JEE, NEET, UPSC or more and get a day-by-day timetable to exam day, with alarms, a study log and weekly reports.">
 <link rel="canonical" href="https://aditya454760.github.io/Abhyashify/">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
@@ -46,31 +46,31 @@
 @font-face{font-family:'Atkinson Hyperlegible Next';src:url(fonts/atkinson-700.woff2) format('woff2');font-weight:700 800;font-display:swap}
 @font-face{font-family:'Noto Sans Devanagari';src:url(fonts/devanagari-wght.woff2) format('woff2');font-weight:100 900;font-display:swap;unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF}
 :root{
-  --bg:#F1F2EE; --surface:color-mix(in srgb,var(--bg) 91%,var(--blue)); --surface2:var(--bg);
-  --ink:#121646; --ink2:#2F3470; --ink3:#3C4280;
-  --blue:#1F2A9C; --yellow:#FFE53B; --hero:#1F2A9C; --hero-ink:#F7F6FF;
+  --bg:#F3F0E6; --surface:color-mix(in srgb,var(--bg) 91%,var(--blue)); --surface2:var(--bg);
+  --ink:#132A20; --ink2:#2E4A3C; --ink3:#3B5848; --ink-y:#132A20;
+  --blue:#1B5E3F; --yellow:#FFD93A; --hero:#17523A; --hero-ink:#F4F8F4;
   --line:color-mix(in srgb,var(--ink) 30%,transparent); --track:color-mix(in srgb,var(--bg) 80%,var(--blue));
-  --accent:#BE1263; --accent-soft:#FADBEA; --accent-ink:#FFFFFF;
+  --accent:#B4440A; --accent-soft:#FBE3D2; --accent-ink:#FFFFFF;
   --good:#126B43; --good-soft:#DDF0E5; --warn:#7F5200; --warn-soft:#FFF0B8; --bad:#B3201B; --bad-soft:#FBE0DE;
-  --sl:46%; --scrim:rgba(18,22,70,.5); --shadow:none;
+  --sl:46%; --scrim:rgba(19,42,32,.5); --shadow:none;
   --f-display:'Archivo','Noto Sans Devanagari','Segoe UI',system-ui,sans-serif;
   --f-body:'Atkinson Hyperlegible Next','Atkinson Hyperlegible','Noto Sans Devanagari','Segoe UI',system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#10143A; --ink:#F1F0FF; --ink2:#CDD0F7; --ink3:#B8BDF0; --blue:#A3B1FF; --hero:#2A38D6; --hero-ink:#FFFFFF;
+    --bg:#0E1B15; --ink:#EEF4EF; --ink2:#C9D8CE; --ink3:#B3C7B9; --blue:#7FD6A0; --hero:#1E6A47; --hero-ink:#FFFFFF;
     --line:color-mix(in srgb,var(--ink) 30%,transparent);
-    --accent:#FF63B0; --accent-soft:#4A1B3C; --accent-ink:#10143A;
+    --accent:#FF9B5A; --accent-soft:#402312; --accent-ink:#0E1B15;
     --good:#58C68C; --good-soft:#15301F; --warn:#E4B35B; --warn-soft:#3C3210; --bad:#F2837C; --bad-soft:#3A1A19;
-    --sl:66%; --scrim:rgba(4,6,28,.65); color-scheme:dark;
+    --sl:66%; --scrim:rgba(2,10,6,.65); color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#10143A; --ink:#F1F0FF; --ink2:#CDD0F7; --ink3:#B8BDF0; --blue:#A3B1FF; --hero:#2A38D6; --hero-ink:#FFFFFF;
+  --bg:#0E1B15; --ink:#EEF4EF; --ink2:#C9D8CE; --ink3:#B3C7B9; --blue:#7FD6A0; --hero:#1E6A47; --hero-ink:#FFFFFF;
   --line:color-mix(in srgb,var(--ink) 30%,transparent);
-  --accent:#FF63B0; --accent-soft:#4A1B3C; --accent-ink:#10143A;
+  --accent:#FF9B5A; --accent-soft:#402312; --accent-ink:#0E1B15;
   --good:#58C68C; --good-soft:#15301F; --warn:#E4B35B; --warn-soft:#3C3210; --bad:#F2837C; --bad-soft:#3A1A19;
-  --sl:66%; --scrim:rgba(4,6,28,.65); color-scheme:dark;
+  --sl:66%; --scrim:rgba(2,10,6,.65); color-scheme:dark;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
@@ -401,7 +401,7 @@ html[lang=hi] .wz-chip,html[lang=hi] .wz-opt{letter-spacing:0}
    Panels are flat tinted fields, rows are ruled like a printed timetable, and anything you choose or finish is a filled bubble.
    Nothing floats and nothing casts a soft shadow. Colour is flat; texture comes from hatching, halftone dots and a little paper grain. */
 :root{--riso:color-mix(in srgb,var(--accent) 66%,#fff);--rule:2px solid var(--ink);--hair:1.5px solid var(--line);--hi:var(--hero-ink)}
-::selection{background:var(--yellow);color:#121646}
+::selection{background:var(--yellow);color:var(--ink-y)}
 body{background-color:var(--bg)}
 a{color:var(--blue);text-underline-offset:3px}
 
@@ -425,9 +425,9 @@ html[lang=hi] h1,html[lang=hi] h2{font-weight:800}
 .top{background:var(--bg);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:var(--rule)}
 .brand{font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:1.08rem;letter-spacing:-.01em}
 .logo{width:36px;height:36px;border:0;background:none;border-radius:0}
-.count{background:var(--yellow);color:#121646;border:1.5px solid #121646;border-radius:4px;font-weight:800;transform:rotate(-1.5deg)}
+.count{background:var(--yellow);color:var(--ink-y);border:1.5px solid var(--ink-y);border-radius:4px;font-weight:800;transform:rotate(-1.5deg)}
 .icb{width:44px;height:44px;border-radius:8px;border:1.5px solid var(--ink);background:transparent;color:var(--ink)}
-.icb:hover{background:var(--yellow);color:#121646}
+.icb:hover{background:var(--yellow);color:var(--ink-y)}
 .icb:active{transform:translateY(1px)}
 .icb[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 .icb.sm{width:38px;height:38px}
@@ -460,7 +460,7 @@ html[lang=hi] h1,html[lang=hi] h2{font-weight:800}
 .btn.danger{background:transparent;color:var(--bad);box-shadow:inset 0 0 0 1.5px var(--bad)}
 .btn.stopb{background:var(--bad);color:#fff}
 .btn.sm{min-height:42px;border-radius:8px}
-.btn.soft:hover,.btn.ghost:hover{background:var(--yellow);color:#121646;filter:none;box-shadow:inset 0 0 0 1.5px #121646}
+.btn.soft:hover,.btn.ghost:hover{background:var(--yellow);color:var(--ink-y);filter:none;box-shadow:inset 0 0 0 1.5px var(--ink-y)}
 
 /* pills and chips */
 .pre,.chip,.as-chip,.tool,.wz-chip{background:transparent;color:var(--ink);border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line);min-height:40px}
@@ -488,10 +488,10 @@ html[lang=hi] h1,html[lang=hi] h2{font-weight:800}
 .dayn::after{inset:4px;background:var(--bg)}
 .dayn.today span{color:var(--accent);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:2px}
 .dayn.off{border-style:dashed;border-color:var(--line);background:transparent}
-.dayb[aria-pressed="true"]{background:var(--yellow);color:#121646;box-shadow:none}
-.dayb[aria-pressed="true"] .dayn{border-color:#121646}
+.dayb[aria-pressed="true"]{background:var(--yellow);color:var(--ink-y);box-shadow:none}
+.dayb[aria-pressed="true"] .dayn{border-color:var(--ink-y)}
 .dayb[aria-pressed="true"] .dayn::after{background:var(--yellow)}
-.dayb[aria-pressed="true"] .dayn.today span{color:#B3125E}
+.dayb[aria-pressed="true"] .dayn.today span{color:var(--ink-y)}
 
 /* the Today panel: one solid field of ink, the thing to do next in big figures */
 .hero.today{background:var(--hero);color:var(--hi);--mis:var(--riso);border-radius:14px;padding:20px 18px 16px;gap:12px;flex-direction:column;align-items:stretch;position:relative;overflow:hidden;flex-wrap:nowrap}
@@ -508,8 +508,8 @@ html[lang=hi] h1,html[lang=hi] h2{font-weight:800}
 .hero-top{display:flex;align-items:flex-end}
 .hero .big,.hero .clk{font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:3.7rem;line-height:.9;letter-spacing:-.03em;color:var(--hi);text-shadow:3px 3px 0 var(--mis,var(--riso));font-variant-numeric:tabular-nums}
 .hero .clk{font-size:2.7rem}
-.hero.today .btn{background:var(--yellow);color:#121646}
-.hero.today .btn.stopb{background:#fff;color:#121646}
+.hero.today .btn{background:var(--yellow);color:var(--ink-y)}
+.hero.today .btn.stopb{background:#fff;color:var(--ink-y)}
 .hero.today .btn:hover{filter:brightness(1.05)}
 .hero-tx{gap:6px}
 .hero-meter{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-top:1.5px dashed color-mix(in srgb,var(--hi) 50%,transparent);padding-top:12px}
@@ -628,7 +628,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 </style>
 </head>
 <body>
-<noscript><div style="max-width:42rem;margin:0 auto;padding:24px 16px;font:16px/1.6 system-ui,sans-serif;color:#121646"><h1>Prepkram: exam study planner</h1><p>Free exam study planner. Pick GATE, JEE, NEET, UPSC or more and get a day-by-day timetable to exam day, with alarms, a study log and weekly reports.</p><p>This app needs JavaScript. Without it you can still read about it:</p><ul><li><a href="about/">About Prepkram, how it works and FAQ</a></li><li><a href="exams/">Study planners by exam (JEE, NEET, GATE, UPSC and more)</a></li><li><a href="hi/about/">हिन्दी में जानकारी</a></li></ul><h2>What is Prepkram?</h2><p>Prepkram is a study planner for competitive exams that runs in the browser and installs like an app. You choose an exam, it builds a day-by-day timetable up to your exam date, rings an alarm for each study block, logs the hours you actually study and compares them with the plan in a weekly report.</p><h2>Which exams does it cover?</h2><p>It has preloaded subjects for 17 exam families: JEE, NEET, GATE, UPSC, SSC, NDA, CDS, CAT / MBA, CLAT / Law, CA, Banking, Railways (RRB), CUET UG, NET / JAM, Teaching (CTET / TET), School boards, State PSC. Each one has its papers or branches, for example GATE CS, DA, ECE, EE, ME and CE, or JEE Main and Advanced. There is always an Other option for an exam that is not listed.</p><h2>How does it build the timetable?</h2><p>It asks for your exam, your paper or branch and any optional subjects, then confirms your exam date (or month, or your own target date). It then asks which parts of the day suit you, how many hours you can give on weekdays and on days off, and which days are off. From those answers it spreads the subjects across the days up to the date, weighted by importance, and keeps a revision buffer and mock tests at the end. You can follow the result as it is or edit any block.</p><h2>Are the exam dates and syllabus official?</h2><p>No. The subjects and the months an exam is usually held were written from general knowledge, not downloaded from official sites. Prepkram asks you to confirm your own exam date and never treats its hint as the real date. Check the syllabus and schedule on the exam body&#x27;s own website and edit the subjects if they differ.</p></div></noscript>
+<noscript><div style="max-width:42rem;margin:0 auto;padding:24px 16px;font:16px/1.6 system-ui,sans-serif;color:#132A20"><h1>Prepkram: exam study planner</h1><p>Free exam study planner. Pick GATE, JEE, NEET, UPSC or more and get a day-by-day timetable to exam day, with alarms, a study log and weekly reports.</p><p>This app needs JavaScript. Without it you can still read about it:</p><ul><li><a href="about/">About Prepkram, how it works and FAQ</a></li><li><a href="exams/">Study planners by exam (JEE, NEET, GATE, UPSC and more)</a></li><li><a href="hi/about/">हिन्दी में जानकारी</a></li></ul><h2>What is Prepkram?</h2><p>Prepkram is a study planner for competitive exams that runs in the browser and installs like an app. You choose an exam, it builds a day-by-day timetable up to your exam date, rings an alarm for each study block, logs the hours you actually study and compares them with the plan in a weekly report.</p><h2>Which exams does it cover?</h2><p>It has preloaded subjects for 17 exam families: JEE, NEET, GATE, UPSC, SSC, NDA, CDS, CAT / MBA, CLAT / Law, CA, Banking, Railways (RRB), CUET UG, NET / JAM, Teaching (CTET / TET), School boards, State PSC. Each one has its papers or branches, for example GATE CS, DA, ECE, EE, ME and CE, or JEE Main and Advanced. There is always an Other option for an exam that is not listed.</p><h2>How does it build the timetable?</h2><p>It asks for your exam, your paper or branch and any optional subjects, then confirms your exam date (or month, or your own target date). It then asks which parts of the day suit you, how many hours you can give on weekdays and on days off, and which days are off. From those answers it spreads the subjects across the days up to the date, weighted by importance, and keeps a revision buffer and mock tests at the end. You can follow the result as it is or edit any block.</p><h2>Are the exam dates and syllabus official?</h2><p>No. The subjects and the months an exam is usually held were written from general knowledge, not downloaded from official sites. Prepkram asks you to confirm your own exam date and never treats its hint as the real date. Check the syllabus and schedule on the exam body&#x27;s own website and edit the subjects if they differ.</p></div></noscript>
 
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -661,7 +661,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 </svg>
 
 <header class="top"><div class="shell">
-  <div class="brand"><span class="logo" aria-hidden="true"><svg viewBox="0 0 96 96"><rect width="96" height="96" rx="22" fill="#1F2A9C"/><rect x="27" y="20" width="14" height="58" rx="7" fill="#F7F6FF"/><circle cx="56" cy="38" r="15" fill="none" stroke="#F7F6FF" stroke-width="12"/><circle cx="56" cy="38" r="5.5" fill="#FF63B0"/></svg></span><span>Prepkram</span></div>
+  <div class="brand"><span class="logo" aria-hidden="true"><svg viewBox="0 0 96 96"><rect width="96" height="96" rx="22" fill="#17523A"/><rect x="27" y="20" width="14" height="58" rx="7" fill="#F4F8F4"/><circle cx="56" cy="38" r="15" fill="none" stroke="#F4F8F4" stroke-width="12"/><circle cx="56" cy="38" r="5.5" fill="#FF9B5A"/></svg></span><span>Prepkram</span></div>
   <div class="top-r"><span class="count" id="count" hidden></span>
     <button class="icb avatar" id="acct" type="button" data-act="acct" aria-label="Account"></button>
     <button class="icb" id="bell" type="button" data-act="arm" aria-pressed="false" aria-label="Alarms"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg></button></div>
@@ -1267,7 +1267,7 @@ Object.assign(HI,{
 'Save':'सहेजें','Saved':'सहेजा गया','Added':'जुड़ गया','Delete':'हटाएँ','Deleted':'हटा दिया गया','Marked complete':'पूरा चिह्नित किया','Completed:':'पूरा हुआ:',
 /* settings */
 'Settings':'सेटिंग्स','Exam date, appearance, exports':'परीक्षा की तारीख़, दिखावट, एक्सपोर्ट','Course name':'कोर्स का नाम','Appearance':'दिखावट','Auto':'अपने-आप','Light':'हल्का','Dark':'गहरा',
-'Accent colour':'मुख्य रंग','Background':'पृष्ठभूमि','Default':'डिफ़ॉल्ट','Exam name':'परीक्षा का नाम','Exam date':'परीक्षा की तारीख़','Alarm minutes early':'अलार्म कितने मिनट पहले','Revision buffer (days)':'रिवीजन के लिए बफ़र (दिन)','Save settings':'सेटिंग्स सहेजें','Settings saved':'सेटिंग्स सहेजी गईं',
+'Accent colour':'मुख्य रंग','Colour theme':'रंग थीम','Background':'पृष्ठभूमि','Default':'डिफ़ॉल्ट','Exam name':'परीक्षा का नाम','Exam date':'परीक्षा की तारीख़','Alarm minutes early':'अलार्म कितने मिनट पहले','Revision buffer (days)':'रिवीजन के लिए बफ़र (दिन)','Save settings':'सेटिंग्स सहेजें','Settings saved':'सेटिंग्स सहेजी गईं',
 'Export schedule for Google Calendar (CSV)':'Google कैलेंडर के लिए समय-सारणी एक्सपोर्ट करें (CSV)',
 "Import the file in Google Calendar on a computer. Your calendar's own notifications then work when this page is closed.":'यह फ़ाइल कंप्यूटर पर Google कैलेंडर में इम्पोर्ट करें। फिर पेज बंद होने पर भी आपके कैलेंडर की अपनी सूचनाएँ काम करेंगी।',
 'Download a backup (JSON)':'बैकअप डाउनलोड करें (JSON)','Export all my data (JSON)':'मेरा पूरा डेटा एक्सपोर्ट करें (JSON)','Import a backup (JSON)':'बैकअप इम्पोर्ट करें (JSON)',
@@ -1812,7 +1812,7 @@ function genPlan(cfg){
 const ACCENTS={indigo:'#4349C9',blue:'#1D6FD8',teal:'#0F8B8D',green:'#1F8A57',lime:'#5B8A12',yellow:'#B8860B',gold:'#B8860B',orange:'#D9631A',red:'#C23B35',pink:'#C93C7C',magenta:'#B5389E',purple:'#7A3FC4',violet:'#6A45D1',brown:'#8A5A3C',grey:'#58677A',gray:'#58677A',slate:'#4A5B6A',cyan:'#0E87A8',navy:'#26407A',maroon:'#8E2B3A'};
 // Each background has a light and a dark version. tone 'dark' means it only makes sense in dark mode.
 const BGS={
-  default:{label:'Default',l:{bg:'#F1F2EE'},d:{bg:'#10143A'}},
+  default:{label:'Default',l:{bg:'#F3F0E6'},d:{bg:'#0E1B15'}},
   paper:{label:'Paper',l:{bg:'#F7F1E5'},d:{bg:'#2A261F'}},
   mint:{label:'Mint',l:{bg:'#E9F4EE'},d:{bg:'#1C2823'}},
   sky:{label:'Sky',l:{bg:'#E8F1FB'},d:{bg:'#1B2733'}},
@@ -1824,7 +1824,20 @@ const BGS={
   midnight:{label:'Midnight',tone:'dark',d:{bg:'#141C32',img:'linear-gradient(180deg,#1C2850 0%,#141C32 60%)'}},
   black:{label:'Black',tone:'dark',d:{bg:'#121519'}}
 };
-let LOOK=Object.assign({accent:null,bg:null},lsGet('pl.look',{}));
+
+// Colour themes: each sets the ink, the main colour, the hero card and the second ink. "forest" is the default in the stylesheet.
+const PALS={
+  forest:{label:'Forest',sw:['#1B5E3F','#B4440A'],
+    l:{'--bg':'#F3F0E6','--ink':'#132A20','--ink2':'#2E4A3C','--ink3':'#3B5848','--ink-y':'#132A20','--blue':'#1B5E3F','--hero':'#17523A','--hero-ink':'#F4F8F4','--accent':'#B4440A','--accent-soft':'#FBE3D2','--accent-ink':'#FFFFFF','--scrim':'rgba(19,42,32,.5)'},
+    d:{'--bg':'#0E1B15','--ink':'#EEF4EF','--ink2':'#C9D8CE','--ink3':'#B3C7B9','--ink-y':'#132A20','--blue':'#7FD6A0','--hero':'#1E6A47','--hero-ink':'#FFFFFF','--accent':'#FF9B5A','--accent-soft':'#402312','--accent-ink':'#0E1B15','--scrim':'rgba(2,10,6,.65)'}},
+  maroon:{label:'Maroon',sw:['#7A1F2B','#0E6B6B'],
+    l:{'--bg':'#F6F0E8','--ink':'#2A1418','--ink2':'#4D2B31','--ink3':'#5C3A40','--ink-y':'#2A1418','--blue':'#7A1F2B','--hero':'#6B1A26','--hero-ink':'#FBF3EF','--accent':'#0E6B6B','--accent-soft':'#D5EEEC','--accent-ink':'#FFFFFF','--scrim':'rgba(42,20,24,.5)'},
+    d:{'--bg':'#1E0F12','--ink':'#F6ECE6','--ink2':'#E0CCC6','--ink3':'#CDB4AD','--ink-y':'#2A1418','--blue':'#F0A0A8','--hero':'#8A2432','--hero-ink':'#FFFFFF','--accent':'#4CC3C3','--accent-soft':'#0F3030','--accent-ink':'#1E0F12','--scrim':'rgba(12,4,6,.65)'}},
+  graphite:{label:'Graphite',sw:['#2B2B25','#C2381A'],
+    l:{'--bg':'#F2F1EC','--ink':'#1A1A17','--ink2':'#3B3B35','--ink3':'#4A4A43','--ink-y':'#1A1A17','--blue':'#2B2B25','--hero':'#23231F','--hero-ink':'#F7F6F0','--accent':'#C2381A','--accent-soft':'#F8DDD5','--accent-ink':'#FFFFFF','--scrim':'rgba(26,26,23,.5)'},
+    d:{'--bg':'#121210','--ink':'#F1F0EA','--ink2':'#D3D2C9','--ink3':'#BDBCB2','--ink-y':'#1A1A17','--blue':'#E9E6D8','--hero':'#2C2C27','--hero-ink':'#FFFFFF','--accent':'#FF7A4F','--accent-soft':'#40211A','--accent-ink':'#121210','--scrim':'rgba(0,0,0,.65)'}}
+};
+let LOOK=Object.assign({accent:null,bg:null,pal:null},lsGet('pl.look',{}));
 const isDarkNow=()=>theme==='dark'||(theme==='auto'&&!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches));
 const hexOk=h=>typeof h==='string'&&/^#[0-9a-f]{6}$/i.test(h);
 function h2rgb(h){return [1,3,5].map(i=>parseInt(h.slice(i,i+2),16))}
@@ -1841,8 +1854,10 @@ function parseColour(s){
 }
 function applyLook(){
   const st=document.documentElement.style,dark=isDarkNow();
-  const vars=['--accent','--accent-soft','--accent-ink','--bg','--bgimg'];
+  const vars=['--accent','--accent-soft','--accent-ink','--bg','--bgimg','--ink','--ink2','--ink3','--ink-y','--blue','--hero','--hero-ink','--scrim'];
   vars.forEach(v=>st.removeProperty(v));
+  const pal=LOOK.pal&&PALS[LOOK.pal];
+  if(pal)Object.entries(dark?pal.d:pal.l).forEach(([k,v])=>st.setProperty(k,v));
   if(LOOK.accent&&hexOk(LOOK.accent)){
     const [h,s0,l0]=rgb2hsl(h2rgb(LOOK.accent)),s=Math.min(s0,88);
     // keep the colour readable: darker on light screens, lighter on dark ones
@@ -1854,7 +1869,7 @@ function applyLook(){
   const bg=resolveBg(LOOK.bg,dark);
   if(bg){st.setProperty('--bg',bg.bg);if(bg.img)st.setProperty('--bgimg',bg.img)}
   const meta=document.querySelector('meta[name=theme-color]');
-  if(meta)meta.setAttribute('content',bg?bg.bg:('#F1F2EE'));
+  if(meta)meta.setAttribute('content',bg?bg.bg:(getComputedStyle(document.documentElement).getPropertyValue('--bg').trim()||'#F3F0E6'));
 }
 function resolveBg(key,dark){
   if(!key)return null;
@@ -1866,6 +1881,7 @@ function resolveBg(key,dark){
 function setLook(p){
   let note='';
   if('accent' in p){const c=p.accent?parseColour(p.accent):null;if(p.accent&&!c)return {err:H('I do not know the colour "'+p.accent+'". Try a name like green or orange, or a hex code like #1D6FD8.','मैं "'+p.accent+'" रंग नहीं {पहचानता|पहचानती}। हरा या नारंगी जैसा नाम, या #1D6FD8 जैसा हेक्स कोड बताएँ।')};LOOK.accent=c}
+  if('pal' in p){LOOK.pal=p.pal&&PALS[p.pal]?p.pal:null}
   if('bg' in p){
     let k=p.bg;
     if(k&&!BGS[k]){const c=parseColour(k);if(!c)return {err:H('I do not know the background "'+k+'". Pick one of: '+Object.keys(BGS).join(', ')+', or give a hex code.','मैं "'+k+'" पृष्ठभूमि नहीं {पहचानता|पहचानती}। इनमें से चुनें: '+Object.keys(BGS).map(x=>L(BGS[x].label)).join(', ')+', या हेक्स कोड दें।')};k=c}
@@ -1881,7 +1897,7 @@ function setLook(p){
   lsSet('pl.look',LOOK);applyTheme();
   return {note};
 }
-function resetLook(){LOOK={accent:null,bg:null};lsSet('pl.look',LOOK);applyLook()}
+function resetLook(){LOOK={accent:null,bg:null,pal:null};lsSet('pl.look',LOOK);applyLook()}
 if(window.matchMedia)try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>applyLook())}catch(e){}
 
 /* swatches in Settings */
@@ -1890,7 +1906,8 @@ function lookPickers(){
   const acc=PICK_ACC.map(k=>`<button type="button" class="sw" style="background:${ACCENTS[k]}" data-act="lookacc" data-v="${k}" aria-label="${k} accent" aria-pressed="${LOOK.accent===ACCENTS[k]}"></button>`).join('')+`<button type="button" class="btn sm ghost" data-act="lookacc" data-v="">Default</button>`;
   const dk=isDarkNow();
   const bgs=Object.keys(BGS).filter(k=>k!=='default').map(k=>{const r=resolveBg(k,dk)||resolveBg(k,!dk);return `<button type="button" class="sw bgsw" style="background:${r.img||r.bg}" data-act="lookbg" data-v="${k}" aria-label="${BGS[k].label} background" aria-pressed="${LOOK.bg===k}"></button>`}).join('')+`<button type="button" class="btn sm ghost" data-act="lookbg" data-v="">Default</button>`;
-  return `<div class="stack" id="lookpick" style="gap:8px"><span class="kick">Accent colour</span><div class="sw-row">${acc}</div><span class="kick" style="margin-top:6px">Background</span><div class="sw-row">${bgs}</div></div>`;
+  const pals=Object.keys(PALS).map(k=>`<button type="button" class="sw palsw" style="background:linear-gradient(135deg,${PALS[k].sw[0]} 50%,${PALS[k].sw[1]} 50%)" data-act="lookpal" data-v="${k}" aria-label="${PALS[k].label} colour theme" aria-pressed="${(LOOK.pal||'forest')===k}"></button>`).join('');
+  return `<div class="stack" id="lookpick" style="gap:8px"><span class="kick">Colour theme</span><div class="sw-row">${pals}</div><span class="kick" style="margin-top:6px">Accent colour</span><div class="sw-row">${acc}</div><span class="kick" style="margin-top:6px">Background</span><div class="sw-row">${bgs}</div></div>`;
 }
 function paintLookPickers(){const e=document.getElementById('lookpick');if(e)e.outerHTML=lookPickers()}
 
@@ -1905,7 +1922,9 @@ function applyTheme(){const r=document.documentElement;if(theme==='auto')r.remov
 /* ---------- UI helpers ---------- */
 const ic=(n,c)=>`<svg class="ic${c?' '+c:''}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 const subjName=id=>(S.plan.subjects.find(s=>s.id===id)||{name:'Other'}).name;
-const cvar=id=>{const i=Math.max(0,S.plan.subjects.findIndex(s=>s.id===id));return `--c:hsl(${(i*47+215)%360} 58% var(--sl))`};
+/* subject colours: earthy and spread across hue and saturation so ten subjects still tell apart; no pure blue or pink */
+const SUBJ_HS=[[152,52],[24,76],[182,56],[44,80],[6,62],[92,46],[286,36],[30,34],[205,40],[130,30]];
+const cvar=id=>{const i=Math.max(0,S.plan.subjects.findIndex(s=>s.id===id)),h=SUBJ_HS[i%SUBJ_HS.length];return `--c:hsl(${(h[0]+Math.floor(i/SUBJ_HS.length)*17)%360} ${h[1]}% var(--sl))`};
 const subjChip=id=>`<span class="chip" style="${cvar(id)}"><span class="dot"></span>${esc(subjName(id))}</span>`;
 const subjOpts=sel=>S.plan.subjects.map(s=>`<option value="${esc(s.id)}"${s.id===sel?' selected':''}>${esc(s.name)}</option>`).join('');
 const kindOpts=(o,sel)=>Object.entries(o).map(([k,v])=>`<option value="${k}"${k===sel?' selected':''}>${esc(v)}</option>`).join('');
@@ -4842,6 +4861,7 @@ document.addEventListener('click',async e=>{
       break}
     case 'settings':settingsForm();break;
     case 'lang':setLang(d.v);break;
+    case 'lookpal':{setLook({pal:d.v==='forest'?null:d.v});paintLookPickers();break}
     case 'lookacc':{const r=setLook({accent:d.v||null});if(r.err)toast(r.err);paintLookPickers();break}
     case 'lookbg':{const r=setLook({bg:d.v||null});if(r.err)toast(r.err);else if(r.note)toast(r.note.trim());paintLookPickers();document.querySelectorAll('#themeseg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===theme));break}
     case 'theme':theme=d.v;lsSet('pl.theme',theme);applyTheme();document.querySelectorAll('#themeseg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===theme));break;

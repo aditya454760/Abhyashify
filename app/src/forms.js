@@ -284,6 +284,7 @@ document.addEventListener('click',async e=>{
       break}
     case 'settings':settingsForm();break;
     case 'lang':setLang(d.v);break;
+    case 'lookpal':{setLook({pal:d.v==='forest'?null:d.v});paintLookPickers();break}
     case 'lookacc':{const r=setLook({accent:d.v||null});if(r.err)toast(r.err);paintLookPickers();break}
     case 'lookbg':{const r=setLook({bg:d.v||null});if(r.err)toast(r.err);else if(r.note)toast(r.note.trim());paintLookPickers();document.querySelectorAll('#themeseg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===theme));break}
     case 'theme':theme=d.v;lsSet('pl.theme',theme);applyTheme();document.querySelectorAll('#themeseg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===theme));break;

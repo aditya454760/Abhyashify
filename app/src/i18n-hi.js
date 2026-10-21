@@ -78,7 +78,7 @@ Object.assign(HI,{
 'Save':'सहेजें','Saved':'सहेजा गया','Added':'जुड़ गया','Delete':'हटाएँ','Deleted':'हटा दिया गया','Marked complete':'पूरा चिह्नित किया','Completed:':'पूरा हुआ:',
 /* settings */
 'Settings':'सेटिंग्स','Exam date, appearance, exports':'परीक्षा की तारीख़, दिखावट, एक्सपोर्ट','Course name':'कोर्स का नाम','Appearance':'दिखावट','Auto':'अपने-आप','Light':'हल्का','Dark':'गहरा',
-'Accent colour':'मुख्य रंग','Background':'पृष्ठभूमि','Default':'डिफ़ॉल्ट','Exam name':'परीक्षा का नाम','Exam date':'परीक्षा की तारीख़','Alarm minutes early':'अलार्म कितने मिनट पहले','Revision buffer (days)':'रिवीजन के लिए बफ़र (दिन)','Save settings':'सेटिंग्स सहेजें','Settings saved':'सेटिंग्स सहेजी गईं',
+'Accent colour':'मुख्य रंग','Colour theme':'रंग थीम','Background':'पृष्ठभूमि','Default':'डिफ़ॉल्ट','Exam name':'परीक्षा का नाम','Exam date':'परीक्षा की तारीख़','Alarm minutes early':'अलार्म कितने मिनट पहले','Revision buffer (days)':'रिवीजन के लिए बफ़र (दिन)','Save settings':'सेटिंग्स सहेजें','Settings saved':'सेटिंग्स सहेजी गईं',
 'Export schedule for Google Calendar (CSV)':'Google कैलेंडर के लिए समय-सारणी एक्सपोर्ट करें (CSV)',
 "Import the file in Google Calendar on a computer. Your calendar's own notifications then work when this page is closed.":'यह फ़ाइल कंप्यूटर पर Google कैलेंडर में इम्पोर्ट करें। फिर पेज बंद होने पर भी आपके कैलेंडर की अपनी सूचनाएँ काम करेंगी।',
 'Download a backup (JSON)':'बैकअप डाउनलोड करें (JSON)','Export all my data (JSON)':'मेरा पूरा डेटा एक्सपोर्ट करें (JSON)','Import a backup (JSON)':'बैकअप इम्पोर्ट करें (JSON)',

@@ -1,6 +1,6 @@
 /* Prepkram service worker: keeps the app shell available offline.
    Only same-origin files are cached. Firebase, Google sign-in and fonts always go straight to the network. */
-const CACHE = 'abhyashify-v10';
+const CACHE = 'abhyashify-v11';
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png', 'fonts/archivo-wdth.woff2', 'fonts/atkinson-400.woff2', 'fonts/atkinson-600.woff2', 'fonts/atkinson-700.woff2', 'fonts/devanagari-wght.woff2'];
 
 self.addEventListener('install', e => {
