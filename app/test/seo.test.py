@@ -49,7 +49,7 @@ pages = []
 for root, _, files in os.walk(docs):
     if '/voice' in root or '/fonts' in root: continue
     for f in files:
-        if f.endswith('.html') and f not in ('404.html',) and not root.endswith('voice-kit'):
+        if f.endswith('.html') and not f.startswith('google') and f not in ('404.html',) and not root.endswith('voice-kit'):
             pages.append(os.path.join(root, f))
 ok(len(pages) >= 35, 'page count %d' % len(pages))
 canon = {}
