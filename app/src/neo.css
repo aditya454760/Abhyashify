@@ -142,3 +142,34 @@ input:focus,select:focus,textarea:focus,.wz-add input:focus,.wz-in:focus,#wiz te
 .st{border-radius:14px;padding:4px 11px}
 .perm .st{white-space:normal;text-align:center;max-width:120px;justify-content:center}
 .perm>.stack:last-child{flex:0 0 auto}
+
+/* ---------- refinements from reviewing other neumorphic and planner UIs ---------- */
+/* text: 7:1 or better on the ground (set in the head tokens). Typed input gets a visible edge so it never depends on shadow alone. */
+input[type=text],input[type=number],input[type=time],input[type=date],input[type=month],input[type=url],input[type=password],select,textarea,
+.wz-add input,.wz-in,#wiz textarea,.wz-blk input,.wz-blk select,.as-in input{box-shadow:var(--s1),inset 0 0 0 1px color-mix(in srgb,var(--ink) 34%,transparent)}
+input:focus,select:focus,textarea:focus,.wz-add input:focus,.wz-in:focus,#wiz textarea:focus,#wiz .field input:focus,.as-in input:focus{box-shadow:var(--s1),inset 0 0 0 2px var(--accent)}
+/* icon-only buttons: darker icon, bigger target */
+.icb{width:44px;height:44px;color:var(--ink)}
+.icb.sm{width:38px;height:38px}
+.btn.sm{min-height:42px}
+.seg button{min-height:40px}
+.pre,.wz-chip{min-height:40px}
+/* switches and sliders: groove + raised knob; colour, not shadow, says on/off */
+.switch input[type=checkbox],.wz-chk input[type=checkbox]{-webkit-appearance:none;appearance:none;position:relative;flex:none;width:52px;height:30px;border-radius:16px;background:var(--surface);box-shadow:var(--s2),inset 0 0 0 1px color-mix(in srgb,var(--ink) 30%,transparent);cursor:pointer;transition:background .18s}
+.switch input[type=checkbox]::before,.wz-chk input[type=checkbox]::before{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:var(--surface);box-shadow:var(--r3);transition:transform .18s}
+.switch input[type=checkbox]:checked,.wz-chk input[type=checkbox]:checked{background:color-mix(in srgb,var(--accent) 38%,var(--bg))}
+.switch input[type=checkbox]:checked::before,.wz-chk input[type=checkbox]:checked::before{transform:translateX(22px);background:var(--accent);box-shadow:var(--r3)}
+.wz-chk input[type=checkbox]{width:46px;height:28px}
+.wz-chk input[type=checkbox]::before{width:22px;height:22px}
+.wz-chk input[type=checkbox]:checked::before{transform:translateX(18px)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:12px;border-radius:8px;background:var(--surface);box-shadow:var(--s2);border:0;padding:0;min-height:0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:var(--accent);box-shadow:var(--r3);border:0}
+input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:var(--accent);box-shadow:var(--r3);border:0}
+@media (prefers-reduced-motion:reduce){.switch input[type=checkbox]::before,.wz-chk input[type=checkbox]::before{transition:none}}
+/* the day as a timeline: a groove runs down the left and each block hangs a dot on it (the dot is filled once it is done) */
+.blist{position:relative;padding-left:22px}
+.blist::before{content:"";position:absolute;left:5px;top:14px;bottom:14px;width:6px;border-radius:4px;background:var(--surface);box-shadow:var(--s2)}
+.blist>.blk::after{content:"";position:absolute;left:-22px;top:26px;width:16px;height:16px;border-radius:50%;background:var(--surface);box-shadow:var(--r3),inset 0 0 0 4px var(--surface),inset 0 0 0 9px var(--c)}
+.blist>.blk.done::after{background:var(--c);box-shadow:var(--r3),inset 0 0 0 3px var(--surface)}
+.blist>.blk{overflow:visible}
+.blist>.blk::before{left:10px}
