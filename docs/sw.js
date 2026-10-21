@@ -1,6 +1,6 @@
 /* Abhyashify service worker: keeps the app shell available offline.
    Only same-origin files are cached. Firebase, Google sign-in and fonts always go straight to the network. */
-const CACHE = 'abhyashify-v8';
+const CACHE = 'abhyashify-v9';
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png', 'fonts/archivo-wdth.woff2', 'fonts/atkinson-400.woff2', 'fonts/atkinson-600.woff2', 'fonts/atkinson-700.woff2', 'fonts/devanagari-wght.woff2'];
 
 self.addEventListener('install', e => {
@@ -16,8 +16,12 @@ self.addEventListener('fetch', e => {
   if (url.origin !== location.origin) return;
   // Pages: try the network first so updates arrive, fall back to the saved copy when offline.
   if (req.mode === 'navigate') {
-    e.respondWith(fetch(req).then(r => { const copy = r.clone(); caches.open(CACHE).then(c => c.put('index.html', copy)); return r; })
-      .catch(() => caches.match('index.html')));
+    // Only the app itself is saved as the offline shell. The About and exam pages are ordinary web pages:
+    // they must never overwrite the saved app, or going offline would open the wrong page.
+    const scope = new URL(self.registration.scope);
+    const isApp = url.pathname === scope.pathname || url.pathname === scope.pathname + 'index.html';
+    e.respondWith(fetch(req).then(r => { if (isApp && r.ok) { const copy = r.clone(); caches.open(CACHE).then(c => c.put('index.html', copy)); } return r; })
+      .catch(() => (isApp ? caches.match('index.html') : caches.match(req).then(hit => hit || caches.match('index.html')))));
     return;
   }
   // The offline voice engine is large and never changes between releases: saved copy first, no background refresh.

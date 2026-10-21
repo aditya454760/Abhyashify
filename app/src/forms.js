@@ -132,7 +132,7 @@ function settingsForm(){
     <button class="btn lg ghost" type="button" data-act="exportcsv">${ic('upload')}Export schedule for Google Calendar (CSV)</button>
     <p class="small muted">Import the file in Google Calendar on a computer. Your calendar's own notifications then work when this page is closed.</p>
     ${installBtn()}
-    <button class="btn lg ghost" type="button" data-act="exportjson">${ic('upload')}Download a backup (JSON)</button>`,fd=>{
+    <button class="btn lg ghost" type="button" data-act="exportjson">${ic('upload')}Download a backup (JSON)</button>${aboutLinks()}`,fd=>{
     if(CL){const cn=(fd.get('cn')||'').trim();if(cn&&cn!==CL.name){CL.name=cn;const c=CL.courses.find(x=>x.id===CL.cid);if(c)c.name=cn;FB.updateDoc(courseRef(),{name:cn,updatedAt:FB.serverTimestamp()}).catch(()=>toast('Could not rename the course.'))}}
     const oldEx=p.exam;
     p.examName=(fd.get('en')||'').trim();p.exam=fd.get('ex')||'';p.lead=Math.max(0,+fd.get('lead')||0);p.buffer=Math.max(0,+fd.get('buf')||0);

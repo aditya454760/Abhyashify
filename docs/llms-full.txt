@@ -1,0 +1,228 @@
+# Abhyashify
+
+Pick your exam and get a day-by-day timetable up to exam day, with alarms, study-time tracking, weekly reports and an assistant in English and Hindi.
+
+Source: https://aditya454760.github.io/Abhyashify/about/
+
+## FAQ
+
+### What is Abhyashify?
+
+Abhyashify is a study planner for competitive exams that runs in the browser and installs like an app. You choose an exam, it builds a day-by-day timetable up to your exam date, rings an alarm for each study block, logs the hours you actually study and compares them with the plan in a weekly report.
+
+### Which exams does it cover?
+
+It has preloaded subjects for 17 exam families: JEE, NEET, GATE, UPSC, SSC, NDA, CDS, CAT / MBA, CLAT / Law, CA, Banking, Railways (RRB), CUET UG, NET / JAM, Teaching (CTET / TET), School boards, State PSC. Each one has its papers or branches, for example GATE CS, DA, ECE, EE, ME and CE, or JEE Main and Advanced. There is always an Other option for an exam that is not listed.
+
+### How does it build the timetable?
+
+It asks for your exam, your paper or branch and any optional subjects, then confirms your exam date (or month, or your own target date). It then asks which parts of the day suit you, how many hours you can give on weekdays and on days off, and which days are off. From those answers it spreads the subjects across the days up to the date, weighted by importance, and keeps a revision buffer and mock tests at the end. You can follow the result as it is or edit any block.
+
+### Are the exam dates and syllabus official?
+
+No. The subjects and the months an exam is usually held were written from general knowledge, not downloaded from official sites. Abhyashify asks you to confirm your own exam date and never treats its hint as the real date. Check the syllabus and schedule on the exam body's own website and edit the subjects if they differ.
+
+### Does it cost anything?
+
+Abhyashify has no paid plan. The built-in assistant works with no account and no cost. Optional extras use your own keys: a cloned voice needs a paid plan with ElevenLabs, and the assistant's Smart mode uses a Gemini or Anthropic key that you supply.
+
+### Does it work on a phone and offline?
+
+Yes. Open it in Chrome, Edge or Safari and install it from the browser menu (on iPhone, Add to Home Screen). It then opens in its own window and still loads offline, and your data catches up when you are back online. Alarms ring only while the page is open, because a web page cannot wake a closed phone.
+
+### Can it track the apps and websites I study with?
+
+Partly. A web page cannot see other apps or tabs. Abhyashify notes when you leave the Today screen for a study tool and when you come back. A Chrome and Edge extension counts time on the study sites you choose, and an Android companion app reads usage time for the study apps you choose. The Android companion is still experimental.
+
+### Is it available in Hindi?
+
+Yes. The whole app, the assistant's replies and the voice chat can switch between English and Hindi (हिन्दी) in Settings. The Hindi comes from a built-in dictionary, so a few phrases may still appear in English.
+
+### How does syncing work, and what happens to my data?
+
+Sign in with Google and your plan, materials and study logs sync through Google Firestore, so a phone and a laptop show the same data. If two devices record the same course at the same time, the overlap is counted once. A Smart-mode key is stored only on your device and is sent only to the provider you chose.
+
+### Can I talk to it?
+
+Yes. The assistant is called Anu (Adi in the male voice). You can type or speak. It sets alarms and reminders, schedules tests and answers questions about the app. Speaking needs a browser with speech support, such as Chrome, Edge or Safari.
+
+## How to build a timetable
+
+1. Pick your exam and paper: Choose your exam and its paper or branch from the list. Its subjects load by themselves. If there are optional subjects, pick yours.
+2. Confirm the date: Enter your exam date, the month, or your own target date. Check it against the official notice.
+3. Give permissions and name your study tools: Allow notifications, microphone and storage in one go, and say which apps, websites or YouTube channels you study with.
+4. Say when you can study: Tell it which parts of the day and how many hours suit you, and which days are off.
+5. Review the timetable and follow it: Follow the timetable up to the exam date as it is, or edit any block. Alarms then ring and you log what you actually studied.
+
+## Exams and preloaded subjects
+
+Timings are typical, not official. Always check the exam body's notice.
+
+### JEE (https://aditya454760.github.io/Abhyashify/exams/jee/)
+
+Engineering and architecture entrance
+
+- JEE Main (B.E. / B.Tech). Usually: Usually January and April sessions. Subjects: Physics; Chemistry; Mathematics; Revision & full mocks.
+- JEE Advanced. Usually: Usually May or June, after JEE Main. Subjects: Physics; Chemistry; Mathematics; Revision & full mocks.
+- JEE Main + Advanced. Usually: Main usually January and April, Advanced May or June. Subjects: Physics; Chemistry; Mathematics; Revision & full mocks.
+- JEE Main Paper 2A (B.Arch). Usually: Usually the January and April sessions. Subjects: Mathematics; Aptitude test (architecture); Drawing test; Revision & full mocks.
+- JEE Main Paper 2B (B.Planning). Usually: Usually the January and April sessions. Subjects: Mathematics; Aptitude test; Planning-based questions; Revision & full mocks.
+- JEE Advanced + AAT (architecture). Usually: Advanced usually May or June, the architecture test just after. Subjects: Physics; Chemistry; Mathematics; Architecture aptitude test (drawing, 3D perception); Revision & full mocks.
+
+### NEET (https://aditya454760.github.io/Abhyashify/exams/neet/)
+
+Medical entrance (UG and PG)
+
+- NEET UG. Usually: Usually early May. Subjects: Physics; Chemistry; Botany; Zoology; Revision & full mocks.
+- NEET PG. Usually: The date changes a lot between years. In recent years it was in summer. Subjects: Anatomy; Physiology; Biochemistry; Pathology; Pharmacology; Microbiology; Forensic Medicine; Community Medicine (PSM); Medicine; Surgery; Obstetrics & Gynaecology; Paediatrics; Orthopaedics; ENT; Ophthalmology; Dermatology; Psychiatry; Anaesthesia; Radiology; Revision & full mocks.
+
+### GATE (https://aditya454760.github.io/Abhyashify/exams/gate/)
+
+Postgraduate engineering and science entrance (M.Tech, IISc, PSUs)
+
+- CS (Computer Science & IT). Usually: Usually early February (some years late January). The dates change every year. Subjects: Engineering Mathematics (discrete, linear algebra, calculus, probability); Digital Logic; Computer Organization & Architecture; Programming & Data Structures; Algorithms; Theory of Computation; Compiler Design; Operating Systems; Databases; Computer Networks; General Aptitude; Revision & full mocks.
+- DA (Data Science & AI). Usually: Usually early February (some years late January). The dates change every year. Subjects: Probability & Statistics; Linear Algebra; Calculus & Optimization; Python Programming & DSA; Databases & Warehousing; Machine Learning; Artificial Intelligence; General Aptitude; Revision & full mocks.
+- ECE (Electronics & Communication). Usually: Usually early February (some years late January). The dates change every year. Subjects: Engineering Mathematics; Networks, Signals & Systems; Electronic Devices; Analog Circuits; Digital Circuits; Control Systems; Communications; Electromagnetics; General Aptitude; Revision & full mocks.
+- EE (Electrical). Usually: Usually early February (some years late January). The dates change every year. Subjects: Engineering Mathematics; Electric Circuits; Electromagnetic Fields; Signals & Systems; Electrical Machines; Power Systems; Control Systems; Measurements; Analog & Digital Electronics; Power Electronics & Drives; General Aptitude; Revision & full mocks.
+- ME (Mechanical). Usually: Usually early February (some years late January). The dates change every year. Subjects: Engineering Mathematics; Engineering Mechanics; Mechanics of Materials; Theory of Machines & Vibrations; Machine Design; Fluid Mechanics & Machines; Heat Transfer; Thermodynamics; Thermal applications (engines, turbines, refrigeration); Materials, Manufacturing & Industrial Engineering; General Aptitude; Revision & full mocks.
+- CE (Civil). Usually: Usually early February (some years late January). The dates change every year. Subjects: Engineering Mathematics; Engineering Mechanics & Solid Mechanics; Structural Analysis; Concrete & Steel Structures; Construction Materials & Management; Geotechnical Engineering; Fluid Mechanics & Hydrology; Environmental Engineering; Transportation Engineering; Geomatics (surveying); General Aptitude; Revision & full mocks.
+- CH (Chemical). Usually: Usually early February (some years late January). The dates change every year. Subjects: Engineering Mathematics; Process Calculations & Thermodynamics; Fluid Mechanics & Mechanical Operations; Heat Transfer; Mass Transfer; Chemical Reaction Engineering; Instrumentation & Process Control; Plant Design & Economics; Chemical Technology; General Aptitude; Revision & full mocks.
+- IN (Instrumentation). Usually: Usually early February (some years late January). The dates change every year. Subjects: Engineering Mathematics; Electrical Circuits & Machines; Signals & Systems; Control Systems; Analog & Digital Electronics; Measurements; Sensors & Industrial Instrumentation; Communication & Optical Instrumentation; General Aptitude; Revision & full mocks.
+- BT (Biotechnology). Usually: Usually early February (some years late January). The dates change every year. Subjects: Engineering Mathematics; General Biotechnology; Biochemistry; Molecular Biology & Genetics; Cell Biology; Microbiology; Immunology; Bioprocess Engineering; Bioinformatics; General Aptitude; Revision & full mocks.
+- PI (Production & Industrial). Usually: Usually early February (some years late January). The dates change every year. Subjects: Engineering Mathematics; General Engineering (mechanics, materials, thermo); Manufacturing Processes; Metrology & Inspection; Machine Tools & Tool Engineering; Production Planning & Control; Operations Research; Quality & Reliability; General Aptitude; Revision & full mocks.
+- XE (Engineering Sciences). Usually: Usually early February. Subjects: Engineering Mathematics; Fluid Mechanics; General Aptitude; Revision & full mocks.
+  - Choose your two optional sections Materials Science; Solid Mechanics; Thermodynamics; Polymer Science & Engineering; Food Technology; Atmospheric & Oceanic Sciences
+- XL (Life Sciences). Usually: Usually early February. Subjects: Chemistry; General Aptitude; Revision & full mocks.
+  - Choose your two optional sections Biochemistry; Botany; Microbiology; Zoology; Food Technology
+
+### UPSC (https://aditya454760.github.io/Abhyashify/exams/upsc/)
+
+Civil Services and engineering services
+
+- Civil Services (IAS): Prelims + Mains. Usually: Prelims is usually late May or June, Mains about three months later. Subjects: Indian Polity & Governance; History, Art & Culture; Geography; Indian Economy; Environment & Ecology; Science & Technology; International Relations; Internal Security & Disaster Management; Ethics, Integrity & Aptitude; Essay; CSAT (aptitude, comprehension, reasoning); Current Affairs; Answer writing practice.
+  - Choose your optional subject Agriculture; Animal Husbandry & Veterinary Science; Anthropology; Botany; Chemistry; Civil Engineering; Commerce & Accountancy; Economics; Electrical Engineering; Geography; Geology; History; Law; Management; Mathematics; Mechanical Engineering; Medical Science; Philosophy; Physics; Political Science & International Relations; Psychology; Public Administration; Sociology; Statistics; Zoology; Literature of a language
+- Civil Services (IAS): Prelims only. Usually: Usually late May or June. Subjects: Indian Polity & Governance; History, Art & Culture; Geography; Indian Economy; Environment & Ecology; Science & Technology; CSAT (aptitude, comprehension, reasoning); Current Affairs; Revision & full mocks.
+- Engineering Services (ESE / IES) Stage 1. Usually: The date changes every year. Check the UPSC notice. Subjects: General Studies & Engineering Aptitude; Revision & full mocks.
+  - Choose your engineering branch Civil Engineering (Paper I & II); Mechanical Engineering (Paper I & II); Electrical Engineering (Paper I & II); Electronics & Telecommunication (Paper I & II)
+
+### SSC (https://aditya454760.github.io/Abhyashify/exams/ssc/)
+
+Staff Selection Commission exams
+
+- SSC CGL. Usually: Dates change every year. Check the SSC calendar. Subjects: Quantitative Aptitude; General Intelligence & Reasoning; English Language; General Awareness; Revision & full mocks.
+  - Extra paper for some posts (Tier 2) Statistics; Finance & Economics
+- SSC CHSL. Usually: Dates change every year. Check the SSC calendar. Subjects: Quantitative Aptitude; General Intelligence & Reasoning; English Language; General Awareness; Revision & full mocks.
+  - Skill test Typing practice
+- SSC MTS. Usually: Dates change every year. Check the SSC calendar. Subjects: Numerical & Mathematical Ability; Reasoning Ability & Problem Solving; General English; General Awareness; Revision & full mocks.
+- SSC GD Constable. Usually: Dates change every year. Check the SSC calendar. Subjects: General Knowledge & Awareness; Elementary Mathematics; Reasoning; English / Hindi; Physical fitness (running, PET); Revision & full mocks.
+- SSC CPO (Sub-Inspector). Usually: Dates change every year. Check the SSC calendar. Subjects: General Intelligence & Reasoning; General Knowledge & Awareness; Quantitative Aptitude; English Comprehension; Physical fitness (PET / PST); Revision & full mocks.
+
+### NDA (https://aditya454760.github.io/Abhyashify/exams/nda/)
+
+National Defence Academy and Naval Academy
+
+- NDA & NA written exam. Usually: Held twice a year, usually April and September. Subjects: Mathematics; English; Physics; Chemistry; General Science (biology); History & Freedom Movement; Geography; Current Events; Revision & full mocks.
+  - Also include these? SSB interview preparation; Physical fitness
+
+### CDS (https://aditya454760.github.io/Abhyashify/exams/cds/)
+
+Combined Defence Services (officer entry)
+
+- CDS: IMA / INA / AFA (3 papers). Usually: Held twice a year, usually April and September. Subjects: English; General Knowledge; Elementary Mathematics; Revision & full mocks.
+  - Also include these? SSB interview preparation; Physical fitness
+- CDS: OTA (2 papers). Usually: Held twice a year, usually April and September. Subjects: English; General Knowledge; Revision & full mocks.
+  - Also include these? SSB interview preparation; Physical fitness
+
+### CAT / MBA (https://aditya454760.github.io/Abhyashify/exams/cat/)
+
+Management entrance exams
+
+- CAT. Usually: Usually the last Sunday of November. Subjects: Quantitative Aptitude; Data Interpretation & Logical Reasoning; Verbal Ability & Reading Comprehension; Revision & full mocks.
+- XAT. Usually: Usually early January. Subjects: Verbal & Logical Ability; Decision Making; Quantitative Ability & Data Interpretation; General Knowledge; Revision & full mocks.
+- CMAT. Usually: Dates change every year. Check the NTA notice. Subjects: Quantitative Techniques & Data Interpretation; Logical Reasoning; Language Comprehension; General Awareness; Revision & full mocks.
+- NMAT. Usually: Held in a window of several weeks. Check the official site. Subjects: Language Skills; Quantitative Skills; Logical Reasoning; Revision & full mocks.
+- IPMAT (integrated MBA). Usually: Usually around May. Subjects: Quantitative Ability; Verbal Ability; Revision & full mocks.
+
+### CLAT / Law (https://aditya454760.github.io/Abhyashify/exams/clat/)
+
+Law entrance exams
+
+- CLAT UG. Usually: Usually the first Sunday of December. Subjects: English Language; Current Affairs & General Knowledge; Legal Reasoning; Logical Reasoning; Quantitative Techniques; Revision & full mocks.
+- CLAT PG. Usually: Usually December. Subjects: Constitutional Law; Jurisprudence; Administrative Law; Law of Contracts; Law of Torts; Family Law; Criminal Law; Property Law; Company Law; Public International Law; Environmental Law; Intellectual Property Law; Revision & full mocks.
+- AILET (NLU Delhi). Usually: Usually around December. Subjects: English; General Knowledge & Current Affairs; Legal Aptitude; Reasoning; Elementary Mathematics; Revision & full mocks.
+
+### CA (https://aditya454760.github.io/Abhyashify/exams/ca/)
+
+Chartered Accountancy (ICAI)
+
+- CA Foundation. Usually: ICAI holds it more than once a year. Check the ICAI schedule. Subjects: Principles & Practice of Accounting; Business Laws; Quantitative Aptitude (maths, reasoning, statistics); Business Economics; Revision & full mocks.
+- CA Intermediate: Group 1. Usually: ICAI holds it more than once a year. Check the ICAI schedule. Subjects: Advanced Accounting; Corporate & Other Laws; Taxation (income tax & GST); Revision & full mocks.
+- CA Intermediate: Group 2. Usually: ICAI holds it more than once a year. Check the ICAI schedule. Subjects: Cost & Management Accounting; Auditing & Ethics; Financial Management & Strategic Management; Revision & full mocks.
+- CA Intermediate: both groups. Usually: ICAI holds it more than once a year. Check the ICAI schedule. Subjects: Advanced Accounting; Corporate & Other Laws; Taxation (income tax & GST); Cost & Management Accounting; Auditing & Ethics; Financial Management & Strategic Management; Revision & full mocks.
+- CA Final: both groups. Usually: Usually May and November. Check the ICAI schedule. Subjects: Financial Reporting; Advanced Financial Management; Advanced Auditing & Professional Ethics; Corporate & Economic Laws; Strategic Cost & Performance Management; Direct Tax Laws & International Taxation; Indirect Tax Laws; Revision & full mocks.
+  - Choose your elective paper Risk Management; Financial Services & Capital Markets; International Taxation; Economic Laws; Global Financial Reporting Standards; Multi-Disciplinary Case Study
+
+### Banking (https://aditya454760.github.io/Abhyashify/exams/bank/)
+
+IBPS, SBI and other bank exams
+
+- Bank PO (IBPS / SBI). Usually: Dates change every year. Check the official notice. Subjects: Reasoning Ability; Quantitative Aptitude & Data Interpretation; English Language; General & Financial Awareness; Computer Aptitude; Descriptive writing (letter, essay); Revision & full mocks.
+- Bank Clerk (IBPS / SBI). Usually: Dates change every year. Check the official notice. Subjects: Reasoning Ability; Numerical Ability; English Language; General & Financial Awareness; Computer Aptitude; Revision & full mocks.
+
+### Railways (RRB) (https://aditya454760.github.io/Abhyashify/exams/rail/)
+
+RRB NTPC, Group D, ALP
+
+- RRB NTPC. Usually: Dates change every year. Check the RRB notice. Subjects: Mathematics; General Intelligence & Reasoning; General Awareness; Revision & full mocks.
+- RRB Group D. Usually: Dates change every year. Check the RRB notice. Subjects: Mathematics; General Intelligence & Reasoning; General Science; General Awareness & Current Affairs; Revision & full mocks.
+- RRB ALP / Technician. Usually: Dates change every year. Check the RRB notice. Subjects: Mathematics; General Intelligence & Reasoning; Basic Science & Engineering; General Awareness; Revision & full mocks.
+
+### CUET UG (https://aditya454760.github.io/Abhyashify/exams/cuet/)
+
+Central university entrance
+
+- CUET UG. Usually: Usually May to June. Subjects: General Test; Revision & full mocks.
+  - Choose your language English; Hindi; Other language
+  - Choose your domain subjects (up to 5) Physics; Chemistry; Mathematics; Biology; Accountancy; Business Studies; Economics; History; Geography; Political Science; Psychology; Sociology; Computer Science / Informatics Practices; Physical Education; Legal Studies; Environmental Science
+
+### NET / JAM (https://aditya454760.github.io/Abhyashify/exams/net/)
+
+UGC NET, CSIR NET, IIT JAM
+
+- UGC NET. Usually: Usually twice a year, around June and December. Subjects: Paper 1: Teaching & Research Aptitude; Revision & full mocks.
+  - Choose your Paper 2 subject Computer Science & Applications; Commerce; Economics; English; Hindi; History; Political Science; Sociology; Education; Management; Law; Philosophy; Psychology; Public Administration; Mathematics; Geography; Library & Information Science; Home Science; Physical Education
+- CSIR NET. Usually: Usually twice a year, around June and December. Subjects: General Aptitude; Revision & full mocks.
+  - Choose your subject area Chemical Sciences; Earth Sciences; Life Sciences; Mathematical Sciences; Physical Sciences
+- IIT JAM: Physics. Usually: Usually early February. Subjects: Mathematical Methods; Mechanics & General Properties of Matter; Oscillations, Waves & Optics; Electricity & Magnetism; Kinetic Theory & Thermodynamics; Modern Physics; Solid State & Electronics; Revision & full mocks.
+- IIT JAM: Chemistry. Usually: Usually early February. Subjects: Physical Chemistry; Organic Chemistry; Inorganic Chemistry; Revision & full mocks.
+- IIT JAM: Mathematics. Usually: Usually early February. Subjects: Real Analysis; Calculus of One & Several Variables; Differential Equations; Linear Algebra; Abstract Algebra; Vector Calculus; Sequences & Series; Revision & full mocks.
+- IIT JAM: Mathematical Statistics. Usually: Usually early February. Subjects: Mathematics (calculus, linear algebra); Probability; Random Variables & Distributions; Estimation; Testing of Hypotheses; Revision & full mocks.
+
+### Teaching (CTET / TET) (https://aditya454760.github.io/Abhyashify/exams/tet/)
+
+Teacher eligibility tests
+
+- CTET Paper 1 (classes 1 to 5). Usually: Held once or twice a year. Check the CBSE notice. Subjects: Child Development & Pedagogy; Language I; Language II; Mathematics; Environmental Studies; Revision & full mocks.
+- CTET Paper 2 (classes 6 to 8). Usually: Held once or twice a year. Check the CBSE notice. Subjects: Child Development & Pedagogy; Language I; Language II; Revision & full mocks.
+  - Choose your subject group Mathematics & Science; Social Studies / Social Science
+
+### School boards (https://aditya454760.github.io/Abhyashify/exams/board/)
+
+Class 10 and class 12
+
+- Class 10. Usually: Usually February to March. Subjects: Mathematics; Science; Social Science; English; Hindi / second language; Revision & full mocks.
+- Class 12 Science (PCM). Usually: Usually February to March. Subjects: Physics; Chemistry; Mathematics; English; Revision & full mocks.
+  - Fifth subject Computer Science; Physical Education; Hindi
+- Class 12 Science (PCB). Usually: Usually February to March. Subjects: Physics; Chemistry; Biology; English; Revision & full mocks.
+  - Fifth subject Mathematics; Physical Education; Hindi
+- Class 12 Commerce. Usually: Usually February to March. Subjects: Accountancy; Business Studies; Economics; English; Revision & full mocks.
+  - Fifth subject Mathematics; Informatics Practices; Physical Education
+- Class 12 Humanities. Usually: Usually February to March. Subjects: English; Political Science; History; Geography; Revision & full mocks.
+  - Other subject Economics; Sociology; Psychology; Hindi
+
+### State PSC (https://aditya454760.github.io/Abhyashify/exams/psc/)
+
+State civil services
+
+- State PSC (prelims + mains). Usually: Each state has its own schedule. Check your state commission. Subjects: History & Culture; Geography; Polity & Governance; Economy; Science & Technology; Environment; Your state: history, geography, economy; Aptitude & Reasoning; Current Affairs; Essay & answer writing; Revision & full mocks.
+

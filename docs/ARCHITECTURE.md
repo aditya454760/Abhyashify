@@ -78,3 +78,8 @@ Next:
 - Try real Google sign-in and real sync across two devices.
 - Wrap the site as an Android app with native alarms and the phone usage upload.
 - Invitation screens for sharing a course.
+
+
+## Search pages
+
+`app/seo.py` is called by `build.py`. It reads `EXAMS` from `app/src/exams.js` through Node and writes static English and Hindi pages, `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`, `404.html` and `pages.css` into `docs/`, and supplies the head tags and `<noscript>` text for `index.html`. The service worker treats only the app's own URL as the offline shell, so visiting an About or exam page never replaces the saved app.
