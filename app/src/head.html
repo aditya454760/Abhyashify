@@ -1,34 +1,42 @@
 <title>Abhyashify</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap">
+<link rel="preload" href="fonts/archivo-wdth.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/atkinson-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/atkinson-700.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* Layout: one phone-width column, soft cards on a quiet ground. Sticky top bar, floating pill nav, a mini timer docked above it. */
+/* Look: a two-ink print. Paper ground, press-blue ink for text and rules, a second ink (the accent, pink by default) that overprints,
+   and a yellow highlighter for "now". Study time is counted in filled bubbles like an answer sheet.
+   Fonts are served from this site so the app looks the same offline. */
+@font-face{font-family:'Archivo';src:url(fonts/archivo-wdth.woff2) format('woff2');font-weight:100 900;font-stretch:62% 125%;font-display:swap}
+@font-face{font-family:'Atkinson Hyperlegible Next';src:url(fonts/atkinson-400.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Atkinson Hyperlegible Next';src:url(fonts/atkinson-600.woff2) format('woff2');font-weight:500 600;font-display:swap}
+@font-face{font-family:'Atkinson Hyperlegible Next';src:url(fonts/atkinson-700.woff2) format('woff2');font-weight:700 800;font-display:swap}
+@font-face{font-family:'Noto Sans Devanagari';src:url(fonts/devanagari-wght.woff2) format('woff2');font-weight:100 900;font-display:swap;unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF}
 :root{
-  --bg:#E4E9EF; --surface:var(--bg); --surface2:color-mix(in srgb,var(--bg) 93%,#4a5a6e); --ink:#16222E; --ink2:#3A4651; --ink3:#3F4B57;
-  --line:color-mix(in srgb,var(--bg) 84%,#5a6a7e); --track:color-mix(in srgb,var(--bg) 86%,#5a6a7e);
-  --nhi:rgba(255,255,255,.9); --nlo:rgba(139,155,176,.55); --accent:#4349C9; --accent-soft:#E9EAFB; --accent-ink:#FFFFFF;
-  --good:#1F8A57; --good-soft:#E3F4EA; --warn:#A5700C; --warn-soft:#FBF0D8; --bad:#C23B35; --bad-soft:#FBE6E4;
-  --sl:46%; --scrim:rgba(14,20,26,.45);
-  --shadow:8px 8px 18px var(--nlo),-8px -8px 18px var(--nhi);
-  --f-display:'Bricolage Grotesque','Noto Sans Devanagari','Segoe UI',system-ui,sans-serif;
-  --f-body:'Instrument Sans','Noto Sans Devanagari','Segoe UI',system-ui,sans-serif;
+  --bg:#F1F2EE; --surface:color-mix(in srgb,var(--bg) 91%,var(--blue)); --surface2:var(--bg);
+  --ink:#121646; --ink2:#2F3470; --ink3:#3C4280;
+  --blue:#1F2A9C; --yellow:#FFE53B; --hero:#1F2A9C; --hero-ink:#F7F6FF;
+  --line:color-mix(in srgb,var(--ink) 30%,transparent); --track:color-mix(in srgb,var(--bg) 80%,var(--blue));
+  --accent:#BE1263; --accent-soft:#FADBEA; --accent-ink:#FFFFFF;
+  --good:#126B43; --good-soft:#DDF0E5; --warn:#7F5200; --warn-soft:#FFF0B8; --bad:#B3201B; --bad-soft:#FBE0DE;
+  --sl:46%; --scrim:rgba(18,22,70,.5); --shadow:none;
+  --f-display:'Archivo','Noto Sans Devanagari','Segoe UI',system-ui,sans-serif;
+  --f-body:'Atkinson Hyperlegible Next','Atkinson Hyperlegible','Noto Sans Devanagari','Segoe UI',system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#1F242C; --surface:var(--bg); --surface2:color-mix(in srgb,var(--bg) 90%,#000); --ink:#E8ECF1; --ink2:#BAC4CE; --ink3:#AAB5C0;
-    --line:color-mix(in srgb,var(--bg) 84%,#000); --track:color-mix(in srgb,var(--bg) 80%,#000);
-    --nhi:rgba(255,255,255,.06); --nlo:rgba(0,0,0,.5); --accent:#8F96FF; --accent-soft:#232853; --accent-ink:#0E1217;
-    --good:#58C68C; --good-soft:#15301F; --warn:#E4B35B; --warn-soft:#33290F; --bad:#F2837C; --bad-soft:#3A1A19;
-    --sl:66%; --scrim:rgba(0,0,0,.6); color-scheme:dark;
+    --bg:#10143A; --ink:#F1F0FF; --ink2:#CDD0F7; --ink3:#B8BDF0; --blue:#A3B1FF; --hero:#2A38D6; --hero-ink:#FFFFFF;
+    --line:color-mix(in srgb,var(--ink) 30%,transparent);
+    --accent:#FF63B0; --accent-soft:#4A1B3C; --accent-ink:#10143A;
+    --good:#58C68C; --good-soft:#15301F; --warn:#E4B35B; --warn-soft:#3C3210; --bad:#F2837C; --bad-soft:#3A1A19;
+    --sl:66%; --scrim:rgba(4,6,28,.65); color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#1F242C; --surface:var(--bg); --surface2:color-mix(in srgb,var(--bg) 90%,#000); --ink:#E8ECF1; --ink2:#BAC4CE; --ink3:#AAB5C0;
-  --line:color-mix(in srgb,var(--bg) 84%,#000); --track:color-mix(in srgb,var(--bg) 80%,#000);
-  --nhi:rgba(255,255,255,.06); --nlo:rgba(0,0,0,.5); --accent:#8F96FF; --accent-soft:#232853; --accent-ink:#0E1217;
-  --good:#58C68C; --good-soft:#15301F; --warn:#E4B35B; --warn-soft:#33290F; --bad:#F2837C; --bad-soft:#3A1A19;
-  --sl:66%; --scrim:rgba(0,0,0,.6); color-scheme:dark;
+  --bg:#10143A; --ink:#F1F0FF; --ink2:#CDD0F7; --ink3:#B8BDF0; --blue:#A3B1FF; --hero:#2A38D6; --hero-ink:#FFFFFF;
+  --line:color-mix(in srgb,var(--ink) 30%,transparent);
+  --accent:#FF63B0; --accent-soft:#4A1B3C; --accent-ink:#10143A;
+  --good:#58C68C; --good-soft:#15301F; --warn:#E4B35B; --warn-soft:#3C3210; --bad:#F2837C; --bad-soft:#3A1A19;
+  --sl:66%; --scrim:rgba(4,6,28,.65); color-scheme:dark;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}

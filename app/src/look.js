@@ -2,7 +2,7 @@
 const ACCENTS={indigo:'#4349C9',blue:'#1D6FD8',teal:'#0F8B8D',green:'#1F8A57',lime:'#5B8A12',yellow:'#B8860B',gold:'#B8860B',orange:'#D9631A',red:'#C23B35',pink:'#C93C7C',magenta:'#B5389E',purple:'#7A3FC4',violet:'#6A45D1',brown:'#8A5A3C',grey:'#58677A',gray:'#58677A',slate:'#4A5B6A',cyan:'#0E87A8',navy:'#26407A',maroon:'#8E2B3A'};
 // Each background has a light and a dark version. tone 'dark' means it only makes sense in dark mode.
 const BGS={
-  default:{label:'Default',l:{bg:'#E4E9EF'},d:{bg:'#1F242C'}},
+  default:{label:'Default',l:{bg:'#F1F2EE'},d:{bg:'#10143A'}},
   paper:{label:'Paper',l:{bg:'#F7F1E5'},d:{bg:'#2A261F'}},
   mint:{label:'Mint',l:{bg:'#E9F4EE'},d:{bg:'#1C2823'}},
   sky:{label:'Sky',l:{bg:'#E8F1FB'},d:{bg:'#1B2733'}},
@@ -44,7 +44,7 @@ function applyLook(){
   const bg=resolveBg(LOOK.bg,dark);
   if(bg){st.setProperty('--bg',bg.bg);if(bg.img)st.setProperty('--bgimg',bg.img)}
   const meta=document.querySelector('meta[name=theme-color]');
-  if(meta)meta.setAttribute('content',bg?bg.bg:(LOOK.accent&&hexOk(LOOK.accent)?LOOK.accent:'#4349C9'));
+  if(meta)meta.setAttribute('content',bg?bg.bg:('#F1F2EE'));
 }
 function resolveBg(key,dark){
   if(!key)return null;

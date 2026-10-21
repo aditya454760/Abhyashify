@@ -35,6 +35,13 @@ function ringSvg(p,size,sw,cls){
   return `<svg class="rsvg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle class="rt" cx="${c}" cy="${c}" r="${r}" stroke-width="${sw}"/>
     <circle class="rf ${cls||''}" cx="${c}" cy="${c}" r="${r}" stroke-width="${sw}" stroke-dasharray="${C.toFixed(2)}" stroke-dashoffset="${C.toFixed(2)}" data-off="${(C*(1-Math.max(0,Math.min(100,p))/100)).toFixed(2)}" transform="rotate(-90 ${c} ${c})"/></svg>`;
 }
+/* a row of answer-sheet bubbles: one per half hour planned (hour when the day is long); filled as time is logged */
+function bubbles(done,total){
+  const unit=total>480?60:30,n=Math.max(1,Math.min(24,Math.ceil(Math.max(total,done)/unit)));
+  let h='';
+  for(let i=0;i<n;i++)h+=`<i style="--f:${Math.max(0,Math.min(1,(done-i*unit)/unit)).toFixed(2)}"></i>`;
+  return `<span class="bub" aria-hidden="true">${h}</span>`;
+}
 function animateIn(anim){
   const go=()=>{
     document.querySelectorAll('#view .rf[data-off]').forEach(e=>{e.style.strokeDashoffset=e.dataset.off});
@@ -67,7 +74,7 @@ function blockCard(b,ds,today,nowMin,order){
     if(isToday)acts=`<button class="btn sm" type="button" data-act="start" data-b="${b.id}">${ic('play')}Start</button><button class="btn sm soft" type="button" data-act="log" data-b="${b.id}" data-d="${ds}">Log time</button>`;
     else if(ds<today)acts=`<button class="btn sm soft" type="button" data-act="log" data-b="${b.id}" data-d="${ds}">Log it now</button>`;
   }
-  return `<article class="blk${st==='done'?' done':''}" style="${cvar(b.s)}">
+  return `<article class="blk${st==='done'?' done':''}" data-st="${st}" style="${cvar(b.s)}">
     <div class="tm"><b>${b.st}</b><span>${endTime(b)}</span></div>
     <div class="bd"><div class="tt"><h3>${esc(blockTitle(b))}</h3></div>${STCHIP[st]()}
       <span class="bs">${meta}</span>
@@ -164,7 +171,10 @@ function vToday(){
     else txt=`<span class="kick">Day wrapped up</span><h2>${doneN} of ${blocks.length} blocks done</h2><p class="muted small">Log a missed block below to keep the report honest.</p>`;
   }else if(ds<today)txt=`<span class="kick">Review</span><h2>${doneN} of ${blocks.length} blocks done</h2><p class="muted small">${fmtDur(logged)} logged of ${fmtDur(planned)} planned.</p>`;
   else txt=`<span class="kick">Planned</span><h2>${blocks.length?blocks.length+(blocks.length>1?' blocks':' block'):'Free day'}</h2><p class="muted small">${planned?fmtDur(planned)+' of study planned.':'Nothing scheduled.'}</p>`;
-  h+=`<section class="card hero${heroCls}"><div class="hero-ring">${ringSvg(ringP,112,10,cls)}<div class="hero-ringl">${center}</div></div><div class="hero-tx">${txt}</div></section>`;
+  const bigT=isToday&&run?`<span class="clk" id="clock">00:00:00</span>`:(isToday&&!run?(()=>{const nb=blocks.find((b,i)=>sts[i]==='due'||sts[i]==='later');return nb?`<span class="big">${nb.st}</span>`:`<span class="big">${doneN}/${blocks.length}</span>`})():`<span class="big">${doneN}/${blocks.length}</span>`);
+  const meterTx=isToday&&run?(run.pm?H('of '+fmtDur(run.pm)+' planned','योजना '+fmtDur(run.pm)+' की'):H('in progress','जारी है')):H(fmtDur(logged)+' of '+fmtDur(planned)+' today',fmtDur(logged)+' / '+fmtDur(planned)+' आज');
+  const meterDone=isToday&&run?(run.pm?Math.min(run.pm,(Date.now()-run.t0)/60000):0):logged,meterTot=isToday&&run?(run.pm||60):planned;
+  h+=`<section class="card hero today${heroCls}"><div class="hero-top">${bigT}</div><div class="hero-tx">${txt}</div><div class="hero-meter">${bubbles(meterDone,meterTot)}<span class="small">${meterTx}</span></div></section>`;
 
   if(blocks.length){
     h+=`<div class="stack" style="gap:10px"><div class="sec-h"><h3>Schedule</h3><span class="small muted">${blocks.length} ${blocks.length>1?'blocks':'block'}</span></div><div class="blist">`+blocks.map(b=>blockCard(b,ds,today,nowMin,order)).join('')+`</div></div>`;
