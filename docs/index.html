@@ -4034,17 +4034,21 @@ async function aiCall(system,msgs){
     if(ACFG.provider==='gemini'){
       /* Google retires Gemini model names without notice (a 404 'no longer available'), so on a 404 try the
          alias that always points at the current Flash model, then the newest known name, before giving up. */
-      const tries=[GEM_OK||model].concat(['gemini-flash-latest','gemini-3.8-flash']).filter((m,i,a)=>m&&a.indexOf(m)===i);
+      const tries=[GEM_OK||model].concat(['gemini-flash-latest','gemini-3.8-flash','gemini-3.6-flash','gemini-3.5-flash-lite']).filter((m,i,a)=>m&&a.indexOf(m)===i);
       const send=(m,think)=>fetch('https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(m)+':generateContent',{method:'POST',signal:ctl.signal,
         headers:{'content-type':'application/json','x-goog-api-key':ACFG.key},
         body:JSON.stringify({systemInstruction:{parts:[{text:system}]},contents:msgs.map(x=>({role:x.role==='user'?'user':'model',parts:[{text:x.text}]})),generationConfig:Object.assign({responseMimeType:'application/json',temperature:.3,maxOutputTokens:2000},think?{thinkingConfig:{thinkingLevel:'low'}}:{})})});
+      let lastGone=false;
       for(const m of tries){
         /* Gemini 3 models think before answering, which can take most of a minute; ask for the lightest thinking.
            If a model rejects that setting (400 that is not about the key), ask again without it. */
         res=await send(m,!GEM_NOTHINK);data=await res.json().catch(()=>({}));
         if(res.status===400&&!GEM_NOTHINK&&!/api key|API_KEY/i.test((data&&data.error&&data.error.message)||'')){GEM_NOTHINK=true;res=await send(m,false);data=await res.json().catch(()=>({}))}
-        if(res.status===404&&m!==tries[tries.length-1])continue;
-        if(res.ok)GEM_OK=m;
+        const more=m!==tries[tries.length-1];
+        /* 404 = name retired (remember the replacement); 500/502/503 = Google is overloaded right now (just try the next model, do not pin it) */
+        if(res.status===404&&more){lastGone=true;continue}
+        if(res.status>=500&&more)continue;
+        if(res.ok&&lastGone)GEM_OK=m;
         break;
       }
       if(!res.ok)throw new Error(aiErr(res.status,data&&data.error&&data.error.message));
@@ -4065,7 +4069,7 @@ async function aiCall(system,msgs){
     throw e;
   }finally{clearTimeout(to)}
 }
-const aiErr=(s,m)=>s===401||s===403||s===400&&/api key|API_KEY/i.test(m||'')?'The AI key was rejected. Check it in the gear menu.':s===429?'The AI is rate-limited right now. Try again in a minute.':'The AI returned an error ('+s+')'+(m?': '+String(m).slice(0,120):'')+'.';
+const aiErr=(s,m)=>s===401||s===403||s===400&&/api key|API_KEY/i.test(m||'')?'The AI key was rejected. Check it in the gear menu.':s===429?'The AI is rate-limited right now. Try again in a minute.':s===503||s===500||s===502?'Google\'s AI is busy right now. Try again in a moment.':'The AI returned an error ('+s+')'+(m?': '+String(m).slice(0,120):'')+'.';
 function parseAI(text){
   let s=String(text).trim().replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'');
   const a=s.indexOf('{'),b=s.lastIndexOf('}');

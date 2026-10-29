@@ -129,6 +129,11 @@ const V = (name, lang) => ({ name, lang });
   const E3 = await H.open({ store: { 'pl.asst': JSON.stringify({ provider: 'gemini', key: 'K' }) }, before: mkFetch((u, o) => /thinkingConfig/.test(o.body) ? jr({ error: { message: 'Unknown field thinkingConfig' } }, false, 400) : jr({ candidates: [{ content: { parts: [{ text: '{"reply":"No thinking field","actions":[]}' }] } }] })) });
   const sTh = await E3.w.eval('respond("hello again, how are you")');
   ok('Gemini asks for light thinking, and retries without it if rejected', /thinkingLevel":"low/.test(calls[calls2].o.body) && !/thinkingConfig/.test(calls[calls2 + 1].o.body) && sTh.reply === 'No thinking field');
+  /* overloaded (503): try the next model instead of failing, and do not pin it afterwards */
+  const calls3 = calls.length;
+  const E4 = await H.open({ store: { 'pl.asst': JSON.stringify({ provider: 'gemini', key: 'K' }) }, before: mkFetch((u) => /3\.8-flash:/.test(u) ? jr({ error: { message: 'This model is currently experiencing high demand.' } }, false, 503) : jr({ candidates: [{ content: { parts: [{ text: '{"reply":"Other model answered","actions":[]}' }] } }] })) });
+  const s503 = await E4.w.eval('respond("hello third time")');
+  ok('a 503 from Gemini falls through to another model', s503.reply === 'Other model answered' && !/3\.8-flash:/.test(calls[calls.length - 1].url) && E4.ev('GEM_OK') === '');
   const calls0 = calls.length;
   const F = await H.open({ store: { 'pl.asst': JSON.stringify({ provider: 'anthropic', key: 'sk-ant-x' }) }, before: mkFetch(() => jr({ content: [{ type: 'text', text: '{"reply":"Hello there","actions":[]}' }] })) });
   const s2 = await F.w.eval('respond("hi")');
