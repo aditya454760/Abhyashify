@@ -115,10 +115,15 @@ const V = (name, lang) => ({ name, lang });
   const E = await H.open({ store: { 'pl.asst': JSON.stringify({ provider: 'gemini', key: 'KEY123' }) }, before: mkFetch((u) => jr({ candidates: [{ content: { parts: [{ text: '```json\n' + JSON.stringify({ reply: 'Done, I set it.', actions: [{ type: 'set_reminder', at: tomorrow9(), text: 'Revise graphs' }, { type: 'delete_everything' }, { type: 'set_accent', color: 'purple' }] }) + '\n```' }] } }] })) });
   E.ev('applyTemplate()'); await H.sleep(100);
   const s1 = await E.w.eval('respond("remind me to revise graphs tomorrow morning")');
-  ok('Gemini request goes to the right place with the key in a header', /generativelanguage\.googleapis\.com\/v1beta\/models\/gemini-2\.5-flash:generateContent/.test(calls[0].url) && calls[0].o.headers['x-goog-api-key'] === 'KEY123' && !/KEY123/.test(calls[0].url));
+  ok('Gemini request goes to the right place with the key in a header', /generativelanguage\.googleapis\.com\/v1beta\/models\/gemini-3\.8-flash:generateContent/.test(calls[0].url) && calls[0].o.headers['x-goog-api-key'] === 'KEY123' && !/KEY123/.test(calls[0].url));
   ok('the system prompt carries the app state but not the key', /Current data/.test(calls[0].o.body) && !/KEY123/.test(calls[0].o.body));
   ok('Smart mode actions run through the executor', E.ev('S.plan.reminders.length') === 1 && E.ev('LOOK.accent') !== null);
   ok('unknown actions are ignored', !/delete_everything/.test(JSON.stringify(s1)));
+  /* a retired model name (404) falls back to the latest alias and remembers what worked */
+  const calls1 = calls.length;
+  const E2 = await H.open({ store: { 'pl.asst': JSON.stringify({ provider: 'gemini', key: 'K', model: 'gemini-2.5-flash' }) }, before: mkFetch((u) => /gemini-2\.5-flash:/.test(u) ? jr({ error: { message: 'This model models/gemini-2.5-flash is no longer available to new users.' } }, false, 404) : jr({ candidates: [{ content: { parts: [{ text: '{"reply":"Hi from fallback","actions":[]}' }] } }] })) });
+  const sFb = await E2.w.eval('respond("hello there, how are you")');
+  ok('a retired Gemini model falls back to the latest alias', sFb.reply === 'Hi from fallback' && calls.length - calls1 === 2 && /gemini-flash-latest/.test(calls[calls.length - 1].url));
   const calls0 = calls.length;
   const F = await H.open({ store: { 'pl.asst': JSON.stringify({ provider: 'anthropic', key: 'sk-ant-x' }) }, before: mkFetch(() => jr({ content: [{ type: 'text', text: '{"reply":"Hello there","actions":[]}' }] })) });
   const s2 = await F.w.eval('respond("hi")');

@@ -3966,7 +3966,8 @@ async function brain(text){
 }
 
 /* ---------- optional smart mode: your own AI key, called straight from this device ---------- */
-const AI_PROVIDERS={gemini:{label:'Google Gemini (free key)',model:'gemini-2.5-flash'},anthropic:{label:'Anthropic Claude',model:'claude-haiku-4-5-20251001'}};
+const AI_PROVIDERS={gemini:{label:'Google Gemini (free key)',model:'gemini-3.8-flash'},anthropic:{label:'Anthropic Claude',model:'claude-haiku-4-5-20251001'}};
+let GEM_OK='';
 const aiReady=()=>!!(ACFG.provider&&AI_PROVIDERS[ACFG.provider]&&ACFG.key);
 const ACTION_DOC=`Action types (all fields optional unless marked; dates are YYYY-MM-DD, times are 24-hour HH:MM, in the user's local time):
 set_reminder {at:"YYYY-MM-DD HH:MM" (required), text, kind:"reminder"|"alarm", repeat:"daily"|"weekdays"|"weekly"}
@@ -4031,12 +4032,20 @@ async function aiCall(system,msgs){
   try{
     let res,data,text;
     if(ACFG.provider==='gemini'){
-      res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(model)+':generateContent',{method:'POST',signal:ctl.signal,
-        headers:{'content-type':'application/json','x-goog-api-key':ACFG.key},
-        body:JSON.stringify({systemInstruction:{parts:[{text:system}]},contents:msgs.map(m=>({role:m.role==='user'?'user':'model',parts:[{text:m.text}]})),generationConfig:{responseMimeType:'application/json',temperature:.3,maxOutputTokens:900}})});
-      data=await res.json().catch(()=>({}));
+      /* Google retires Gemini model names without notice (a 404 'no longer available'), so on a 404 try the
+         alias that always points at the current Flash model, then the newest known name, before giving up. */
+      const tries=[GEM_OK||model].concat(['gemini-flash-latest','gemini-3.8-flash']).filter((m,i,a)=>m&&a.indexOf(m)===i);
+      for(const m of tries){
+        res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(m)+':generateContent',{method:'POST',signal:ctl.signal,
+          headers:{'content-type':'application/json','x-goog-api-key':ACFG.key},
+          body:JSON.stringify({systemInstruction:{parts:[{text:system}]},contents:msgs.map(x=>({role:x.role==='user'?'user':'model',parts:[{text:x.text}]})),generationConfig:{responseMimeType:'application/json',temperature:.3,maxOutputTokens:2000}})});
+        data=await res.json().catch(()=>({}));
+        if(res.status===404&&m!==tries[tries.length-1])continue;
+        if(res.ok)GEM_OK=m;
+        break;
+      }
       if(!res.ok)throw new Error(aiErr(res.status,data&&data.error&&data.error.message));
-      text=data.candidates&&data.candidates[0]&&data.candidates[0].content&&data.candidates[0].content.parts&&data.candidates[0].content.parts.map(p=>p.text||'').join('');
+      text=data.candidates&&data.candidates[0]&&data.candidates[0].content&&data.candidates[0].content.parts&&data.candidates[0].content.parts.filter(p=>!p.thought).map(p=>p.text||'').join('');
     }else{
       res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',signal:ctl.signal,
         headers:{'content-type':'application/json','x-api-key':ACFG.key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
