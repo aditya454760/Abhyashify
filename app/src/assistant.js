@@ -680,7 +680,7 @@ async function brain(text){
 
 /* ---------- optional smart mode: your own AI key, called straight from this device ---------- */
 const AI_PROVIDERS={gemini:{label:'Google Gemini (free key)',model:'gemini-3.8-flash'},anthropic:{label:'Anthropic Claude',model:'claude-haiku-4-5-20251001'}};
-let GEM_OK='';
+let GEM_OK='',GEM_NOTHINK=false;
 const aiReady=()=>!!(ACFG.provider&&AI_PROVIDERS[ACFG.provider]&&ACFG.key);
 const ACTION_DOC=`Action types (all fields optional unless marked; dates are YYYY-MM-DD, times are 24-hour HH:MM, in the user's local time):
 set_reminder {at:"YYYY-MM-DD HH:MM" (required), text, kind:"reminder"|"alarm", repeat:"daily"|"weekdays"|"weekly"}
@@ -741,18 +741,21 @@ function aiMessages(userText){
   return merged;
 }
 async function aiCall(system,msgs){
-  const ctl=new AbortController(),to=setTimeout(()=>ctl.abort(),30000),model=(ACFG.model||AI_PROVIDERS[ACFG.provider].model).trim();
+  const ctl=new AbortController(),to=setTimeout(()=>ctl.abort(),60000),model=(ACFG.model||AI_PROVIDERS[ACFG.provider].model).trim();
   try{
     let res,data,text;
     if(ACFG.provider==='gemini'){
       /* Google retires Gemini model names without notice (a 404 'no longer available'), so on a 404 try the
          alias that always points at the current Flash model, then the newest known name, before giving up. */
       const tries=[GEM_OK||model].concat(['gemini-flash-latest','gemini-3.8-flash']).filter((m,i,a)=>m&&a.indexOf(m)===i);
+      const send=(m,think)=>fetch('https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(m)+':generateContent',{method:'POST',signal:ctl.signal,
+        headers:{'content-type':'application/json','x-goog-api-key':ACFG.key},
+        body:JSON.stringify({systemInstruction:{parts:[{text:system}]},contents:msgs.map(x=>({role:x.role==='user'?'user':'model',parts:[{text:x.text}]})),generationConfig:Object.assign({responseMimeType:'application/json',temperature:.3,maxOutputTokens:2000},think?{thinkingConfig:{thinkingLevel:'low'}}:{})})});
       for(const m of tries){
-        res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(m)+':generateContent',{method:'POST',signal:ctl.signal,
-          headers:{'content-type':'application/json','x-goog-api-key':ACFG.key},
-          body:JSON.stringify({systemInstruction:{parts:[{text:system}]},contents:msgs.map(x=>({role:x.role==='user'?'user':'model',parts:[{text:x.text}]})),generationConfig:{responseMimeType:'application/json',temperature:.3,maxOutputTokens:2000}})});
-        data=await res.json().catch(()=>({}));
+        /* Gemini 3 models think before answering, which can take most of a minute; ask for the lightest thinking.
+           If a model rejects that setting (400 that is not about the key), ask again without it. */
+        res=await send(m,!GEM_NOTHINK);data=await res.json().catch(()=>({}));
+        if(res.status===400&&!GEM_NOTHINK&&!/api key|API_KEY/i.test((data&&data.error&&data.error.message)||'')){GEM_NOTHINK=true;res=await send(m,false);data=await res.json().catch(()=>({}))}
         if(res.status===404&&m!==tries[tries.length-1])continue;
         if(res.ok)GEM_OK=m;
         break;

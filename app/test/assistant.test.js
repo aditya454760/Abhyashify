@@ -124,6 +124,11 @@ const V = (name, lang) => ({ name, lang });
   const E2 = await H.open({ store: { 'pl.asst': JSON.stringify({ provider: 'gemini', key: 'K', model: 'gemini-2.5-flash' }) }, before: mkFetch((u) => /gemini-2\.5-flash:/.test(u) ? jr({ error: { message: 'This model models/gemini-2.5-flash is no longer available to new users.' } }, false, 404) : jr({ candidates: [{ content: { parts: [{ text: '{"reply":"Hi from fallback","actions":[]}' }] } }] })) });
   const sFb = await E2.w.eval('respond("hello there, how are you")');
   ok('a retired Gemini model falls back to the latest alias', sFb.reply === 'Hi from fallback' && calls.length - calls1 === 2 && /gemini-flash-latest/.test(calls[calls.length - 1].url));
+  /* requests ask for light thinking (Gemini 3 is slow otherwise); a model that rejects the setting is asked again without it */
+  const calls2 = calls.length;
+  const E3 = await H.open({ store: { 'pl.asst': JSON.stringify({ provider: 'gemini', key: 'K' }) }, before: mkFetch((u, o) => /thinkingConfig/.test(o.body) ? jr({ error: { message: 'Unknown field thinkingConfig' } }, false, 400) : jr({ candidates: [{ content: { parts: [{ text: '{"reply":"No thinking field","actions":[]}' }] } }] })) });
+  const sTh = await E3.w.eval('respond("hello again, how are you")');
+  ok('Gemini asks for light thinking, and retries without it if rejected', /thinkingLevel":"low/.test(calls[calls2].o.body) && !/thinkingConfig/.test(calls[calls2 + 1].o.body) && sTh.reply === 'No thinking field');
   const calls0 = calls.length;
   const F = await H.open({ store: { 'pl.asst': JSON.stringify({ provider: 'anthropic', key: 'sk-ant-x' }) }, before: mkFetch(() => jr({ content: [{ type: 'text', text: '{"reply":"Hello there","actions":[]}' }] })) });
   const s2 = await F.w.eval('respond("hi")');
